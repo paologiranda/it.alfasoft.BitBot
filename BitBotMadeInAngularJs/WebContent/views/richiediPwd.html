@@ -1,0 +1,13 @@
+<div class="row">
+	<div class="col-lg-12">
+		<legend>Inserisci la tua mail</legend>
+		<input type="text" ng-model="newPwd">
+		<button type="submit" class="btn btn active" ng-click="send()">Invia</button>
+	</div>
+</div>
+<div class="row" ng-if="showNewPwd">
+	<div class="col-lg-12">
+		La password da te richiesta è la seguente: {{ nuovaPwd }}
+	</div>
+</div>
+

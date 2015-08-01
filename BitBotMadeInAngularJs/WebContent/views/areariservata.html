@@ -1,0 +1,69 @@
+<p class="animate-repeat" ng-controller="MainCtrl">
+<ul class="nav navbar-nav navbar-right">
+	<li ng-if="loggato == false"><a data-toggle="modal"
+		data-target="#myModal" style="color: #feb401">Sign In</a>
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+			aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="myModalLabel">Accedi alla tua
+							area riservata</h4>
+					</div>
+					<div ng-if="showErrorMail" class="alert alert-danger" role="alert">
+						<span class="glyphicon glyphicon-exclamation-sign"
+							aria-hidden="false"></span>{{ errore }}
+					</div>
+					<div class="modal-body">
+						<form ng-submit="submitForm()">
+							<fieldset>
+
+								<label style="color: #feb401">Name</label>
+								<p>
+									<input type="email" class="form-control"
+										data-ng-model="user.email" required placeholder="Nome utente">
+								</p>
+
+								<div class="form-group">
+
+									<label style="color: #feb401">Password</label>
+									<p>
+										<input type="password" class="form-control"
+											data-ng-model="user.pwd" required placeholder="Password">
+									</p>
+								</div>
+								<div class="checkbox">
+									<label> <input type="checkbox"> Remember me
+									</label>
+								</div>
+								<p>
+									<button type="submit" class="btn btn active">Sign in</button>
+								</p>
+							</fieldset>
+						</form>
+						<br> <a href="#/richiediPwd">Hai dimenticato le credenziali</a><br>
+						<a href="#/registrazione">Crea un nuovo account</a>
+					</div>
+				</div>
+			</div>
+		</div> <span class="sr-only">(current)</span></li>
+	<li ng-if="loggato == true" style="color: #feb401"><p
+			class="animate-repeat">
+			Welcome<br> {{ userData.mail }}
+		</p></li>
+	<li ng-if="loggato == false"><a ng-href="#/registrazione"
+		style="color: #feb401">Sign Up</a></li>
+	<li ng-if="loggato == true"><a style="color: #feb401"
+		ng-click="logout()" ng-href="#/logoutSuccess">Sign out</a></li>
+</ul>
+
+
+<style>
+ul li a:hover {
+	cursor: pointer;
+}
+</style>

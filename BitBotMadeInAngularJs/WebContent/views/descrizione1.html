@@ -1,0 +1,20 @@
+<div class="row">
+	<div class="col-sm-12 col-md-12">
+	    <div class="thumbnail">
+	          		 <h3>Codice prodotto:{{ prodotti.codice }}</h3>
+				     <h3>Nome prodotto: {{ prodotti.nome }}</h3>
+		 </div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-6 col-md-6">
+		<img src="images/img_01.png">
+		<p><strong> Descrizione prodotto: {{ prodotti.descrizione }}</strong></p>
+		<strong> Prezzo:€ {{ prodotti.prezzo }}</strong>
+	</div>
+	<div class="col-sm-6 col-md-6" align="center">
+		<h2><a class="btn btn active"  role="button" ng-click="add('{{prodotti.nome}}')" ng-href="#/carrello">Aggiungi al carrello</a>
+		<a class="btn btn active" role="button" ng-href="#/">Torna al catalogo</a></h2>
+		<h2><a class="btn btn active" ng-href="#/carrello"role="button">Mostra carrello</a></h2>
+	</div>		  
+</div>	

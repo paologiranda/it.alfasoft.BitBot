@@ -1,0 +1,39 @@
+<div class="container-fluid">
+	<div class="row">
+		<h2>Search...</h2>
+		<div id="custom-search-input">
+			<div class="input-group col-md-12">
+				<input type="text" ng-model="query" placeholder="Search" /> <span
+					class="input-group-btn"> <!-- 					<button class="btn btn-danger" type="button">
+						<span class=" glyphicon glyphicon-search"></span>
+					</button> -->
+				</span>
+			</div>
+		</div>
+	</div>
+</div>
+<br>
+<table class="table">
+	<thead>
+		<tr>
+			<th data-field="id">Item ID</th>
+			<th data-field="name">Item Name</th>
+			<th>Item Category</th>
+			<th>Item SubCategory</th>
+		
+			<th>Item code</th>
+			<th>Item descrizione</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="item in items | filter:query | orderBy: 'nome'">
+			<td>{{ $index + 1 }}</td>
+			<td><a ng-href="#/descrizione">{{ item.nome}}</a></td>			
+			<td>{{ item.categoria }}</td>
+			<td>{{ item.sottoCategoria }}</td>
+
+			<td>{{ item.codice }}</td>
+			<td>{{ item.descrizione }}</td>
+		</tr>
+	</tbody>
+</table>

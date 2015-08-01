@@ -1,0 +1,37 @@
+<div class="header" ng-controller="MainCtrl">
+    <nav class="navbar navbar-inverse">
+         <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed"
+              data-toggle="collapse" data-target="#navbar"
+              aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span> <span
+                class="icon-bar"></span> <span class="icon-bar"></span> <span
+                class="icon-bar"></span>
+             </button>
+             <a class="navbar-brand" ng-href="#/"><img src="images/logo.png" style="margin-top:-10px;"></a>
+             </div>
+             <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                  <li ng-if="!profilo" role="presentation"><a ng-href="#/" style="color:#feb401">Home</a></li>
+                  <li ng-if="!profilo" role="presentation"><a ng-href="#/about" style="color:#feb401">About</a></li>
+                  <li ng-if="!profilo" role="presentation"><a ng-href="#/contact" style="color:#feb401">Contact</a></li>
+                  <li ng-if="!profilo" role="presentation"><a ng-href="#/categoria" role="button" aria-expanded="false"
+                   style="color:#feb401">Prodotti</a>
+                  </li>
+                  <li ng-if="!profilo" role="presentation"><a ng-href="#/carrello" style="color:#feb401">Carrello</a></li>
+                  <li ng-if="showUserData" role="presentation"><a ng-href="#/modificaDati" style="color:#feb401">Modifica dati</a></li>
+                  <li ng-if="profilo == true" role="presentation"><a ng-href="#/prodottiInMag" style="color:#feb401">prodotti In magazzino</a></li>
+                  <li ng-if="profilo == true" role="presentation"><a ng-href="#/inserisciProdotto" style="color:#feb401">Inserisci prodotto</a></li>
+               	  <li ng-if="profilo == true" role="presentation"><a ng-href="#/listaClienti" style="color:#feb401">Visualizza utenti iscritti</a></li>	 
+                </ul>
+                 <div ng-include src="'http://localhost:8081/views/areariservata.html'"></div>         
+              </div>  
+                <!-- <div ng-repeat="x in categorie">
+           		{{ x.categoria }}
+           		</div> -->
+              
+          </div>  
+     </nav>
+</div>
+					

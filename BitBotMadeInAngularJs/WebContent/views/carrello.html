@@ -1,0 +1,26 @@
+
+	<h3 ng-if="carrello == null">
+		<p class="animate-repeat" align="center">
+		<img src="images/avviso_carrello_vuoto.jpg">
+		<div align="center">
+			<a class="btn btn-warning active" role="button" ng-href="#/categoria">Consulta il catalogo</a>
+		</div>
+		<hr>
+	</h3>
+	<div class="page-header" ng-if="carrello != null">
+		<div align="right" style="margin-bottom:10px;">
+			<a ng-click="empty()" class="btn btn active">Svuota carrello</a>
+		</div>
+		<ul class="list-group">
+			 <li class="list-group-item" ng-repeat="x in carrello">
+					 	 Prodotto : {{ x.codiceProdotto }} ,
+					 	 quantità : {{ x.qtaOrdinata }}
+			 <a class="btn btn-danger" role="button" ng-click="remove()"aria-label="Remove">Delete</a>
+			 </li>
+		</ul>
+		<div align="right">
+			<a class="btn btn active" role="button" ng-click="confermaOrdine()" ng-href="#/sceltaPagamento">Procedi con l'acquisto</a>
+		</div>
+	</div>
+	<br><hr>
+	
