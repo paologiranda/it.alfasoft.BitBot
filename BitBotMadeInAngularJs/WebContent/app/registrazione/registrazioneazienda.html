@@ -1,0 +1,86 @@
+<a class="btn btn active" role="button" ng-href="#/registrazione"
+	style="float: right;">Torna indietro</a>
+<div class="row">
+	<div class="col-sm-12 col-md-12 col-hi-12">
+		<form ng-submit="registrazioneAzienda(Azienda)">
+			<div class="form-inline" align="left">
+				<legend>Dati Azienda</legend>
+
+				<input type="text" ng-model="Azienda.ragionesociale" required
+					maxlength="20" class="form-control" placeholder="Ragione Sociale">
+				<input type="number" ng-model="Azienda.piva" min="10000000000"
+					max="99999999999" required class="form-control"
+					placeholder="Partita Iva"> <input type="number"
+					ng-model="Azienda.telefono" min="0" max="999999999999" required
+					class="form-control" placeholder="Telefono">
+			</div>
+			<br>
+			<div class="form-inline" align="left">
+				<legend>Indirizzo</legend>
+				<p>
+					<select class="form-control" ng-model="Azienda.tipovia">
+						<option ng-repeat="x in tipovia">{{x}}</option>
+					</select> <input type="text" ng-model="Azienda.nomevia" required
+						maxlength="40" class="form-control" placeholder="Nome via" /> <input
+						type="text" ng-model="Azienda.numerocivico" required maxlength="5"
+						class="form-control" placeholder="numero civico" /> <input
+						type="text" ng-model="Azienda.scala" maxlength="2"
+						class="form-control" placeholder="Scala">
+				</p>
+				<input type="number" ng-model="Azienda.piano" max="999"
+					class="form-control" placeholder="Piano">
+			</div>
+			<hr>
+			<div class="form-inline" align="left">
+				<p>
+					<input type="text" ng-model="Azienda.citta" required maxlength="20"
+						class="form-control" placeholder="citta'"> <input
+						type="text" ng-model="Azienda.provincia" required maxlength="2"
+						class="form-control" placeholder="Provincia"> <input
+						type="number" ng-model="Azienda.cap" required min="10000"
+						max="99999" class="form-control" placeholder="CAP">
+				</p>
+				<input type="text" ng-model="Azienda.paese" required maxlength="20"
+					class="form-control" placeholder="Paese">
+			</div>
+			<br>
+			<div class="form-inline" align="left">
+				<legend>E-mail</legend>
+				<input type="email" ng-model="Azienda.mail1" required maxlength="50"
+					class="form-control" placeholder="Indirizzo e-mail"> <input
+					type="email" ng-model="Azienda.mail2" required maxlength="50"
+					class="form-control" placeholder="Conferma indirizzo e-mail">
+			</div>
+			<br>
+			<div class="form-inline" align="left">
+				<legend>Password</legend>
+				<input type="password" ng-model="Azienda.password"
+					data-minlength="6" class="form-control" required maxlength="16"
+					class="form-control" placeholder="Password"> <input
+					type="password" ng-model="Azienda.password1" required
+					maxlength="16" class="form-control" placeholder="Conferma password">
+			</div>
+			<br>
+			<div class="form-inline" align="left">
+				<br>
+				<button type="submit" class="btn btn-warning active" role="button">Invia</button>
+				<input class="btn btn-warning active" type="reset" value="Reset">
+			</div>
+		</form>
+		<legend>
+			<div ng-if="utenteGiaRegistrato">
+				<div class="alert alert-danger" role="alert">
+					<article>Esiste gia un cliente con la Partita Iva inserita, prego 
+					modificare la Partita Iva</article>
+				</div>
+			</div>
+		</legend>
+
+
+	</div>
+</div>
+<style>
+legend {
+	color: #feb401;
+}
+</style>

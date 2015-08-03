@@ -1,0 +1,23 @@
+<div class="row" align="center">
+	Ciao <strong>{{ PrivatoRegistrato.nome}}</strong>
+	<p>Inserisci qui il codice che ti abbiamo inviato</p>
+	<p>Hai completato la registrazione. Controlla la tua mail e copia e
+		incolla il per attivare il tuo account</p>
+	<br>
+	<div class="row" align="center">
+		<header>
+			<p>Input this code:{{ cConferma }}</p>
+		</header>
+		<form ng-submit="codConferma(codiceConferma)">
+			<section>
+				<p><input type="text" ng-model="codiceConferma" required>
+				</p>
+				<br><button type="submit" class="btn btn active">Invia
+				</button>
+			</section>
+		</form>
+		<div ng-if="showMessagge" class="alert alert-success" role="alert">
+			La registrazione è andata a buon fine!!!
+		</div>
+	</div>
+</div>
