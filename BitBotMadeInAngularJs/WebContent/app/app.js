@@ -119,7 +119,7 @@ angular.module('bitBotApp', [
       })
       
       .otherwise({
-        templateUrl: 'views/404.html',
+        templateUrl: '/404.html',
       })
   })
 
