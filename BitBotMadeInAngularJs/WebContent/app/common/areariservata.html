@@ -1,64 +1,11 @@
-<p class="animate-repeat" ng-controller="MainCtrl">
-<ul class="nav navbar-nav navbar-right">
-	<li><span ><a data-toggle="modal" ng-href="#/login"
-		data-target="#myModal" >Sign In</a></span>
-		<!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-			aria-labelledby="myModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-						<h4 class="modal-title" id="myModalLabel">Accedi alla tua
-							area riservata</h4>
-					</div>
-					<div ng-if="showErrorMail" class="alert alert-danger" role="alert">
-						<span class="glyphicon glyphicon-exclamation-sign"
-							aria-hidden="false"></span>{{ errore }}
-					</div>
-					<div class="modal-body">
-						<form ng-submit="submitForm()">
-							<fieldset>
 
-								<label >Name</label>
-								<p>
-									<input type="email" class="form-control"
-										data-ng-model="user.email" required placeholder="Nome utente">
-								</p>
-
-								<div class="form-group">
-
-									<label >Password</label>
-									<p>
-										<input type="password" class="form-control"
-											data-ng-model="user.pwd" required placeholder="Password">
-									</p>
-								</div>
-								<div class="checkbox">
-									<label> <input type="checkbox"> Remember me
-									</label>
-								</div>
-								<p>
-									<button type="submit" class="btn btn active">Sign in</button>
-								</p>
-							</fieldset>
-						</form>
-						<br> <a href="#/richiediPwd">Hai dimenticato le credenziali</a><br>
-						<a href="#/registrazione">Crea un nuovo account</a>
-					</div>
-				</div>
-			</div>
-		</div --> <span class="sr-only">(current)</span></li>
-	<li ng-if="loggato" ><p
-			class="animate-repeat">
+<ul ng-if="!" class="nav navbar-nav navbar-right">
+	<li><a ng-href="#/login">Sign In</a> <span class="sr-only">(current)</span></li>
+	<li><p class="animate-repeat">
 			Welcome<br> {{ userData.mail }}
 		</p></li>
-	<li ng-if="loggato == null"><a ng-href="#/registrazione"
-		>Sign Up</a></li>
-	<li ng-if="loggato"><a 
-		ng-click="logout()" ng-href="#/logoutSuccess">Sign out</a></li>
+	<li><a ng-href="#/registrazione">Sign Up</a></li>
+	<li><a ng-click="logout()" ng-href="#/logoutSuccess">Sign out</a></li>
 </ul>
 
 

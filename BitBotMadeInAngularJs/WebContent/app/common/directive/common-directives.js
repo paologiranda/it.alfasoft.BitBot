@@ -10,9 +10,12 @@
 angular.module('bitBotApp')
   .directive('menuUtente', function () {
 	  return {
-		    restrict : 'E',		   
-		    templateUrl : "app/common/directive/menuUtente.html",
-		    transclude : true
+		  restrict : 'E',		  
+		  scope:{
+			 menuCliente: '=', 
+		  },    
+		  templateUrl : "app/common/directive/menuUtente.html",
+		    transclude : true,
 		  };
   })
   .directive('menuAdmin', function () {

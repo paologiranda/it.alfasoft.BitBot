@@ -77,11 +77,9 @@ angular.module('bitBotApp', [
       })
       .when('/login', {
         templateUrl: 'app/login/login.html',
-        controller: 'LoginCtrl'
       })
       .when('/logoutSuccess', {
         templateUrl: 'app/login/logoutSuccess.html',
-        controller: ''
       })
        .when('/inserisciProdotto', {
         templateUrl: 'app/admin/inserisciProdotto.html',

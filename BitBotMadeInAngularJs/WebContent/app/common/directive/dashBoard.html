@@ -1,10 +1,10 @@
-<ul ng-if="!profilo" class="nav navbar-nav">
-	<li  class="hvr-bounce-to-bottom active"><a
-		ng-href="#/">Home </a></li>
-	<li class="hvr-bounce-to-bottom"><a
-		ng-href="#/about">About</a></li>
-	<li class="hvr-bounce-to-bottom"><a
-		ng-href="#/contact">Contact</a></li>
-	<li class="hvr-bounce-to-bottom"><a
-		ng-href="#/categoria" aria-expanded="false">Prodotti</a></li>
-</ul>
+<div ng-controller="MainCtrl">
+	<ul ng-if="menuVetrina && !isAdmin" class="nav navbar-nav">
+		<li class="hvr-bounce-to-bottom active"><a ng-href="#/">Home
+		</a></li>
+		<li class="hvr-bounce-to-bottom"><a ng-href="#/about">About</a></li>
+		<li class="hvr-bounce-to-bottom"><a ng-href="#/contact">Contact</a></li>
+		<li class="hvr-bounce-to-bottom"><a ng-href="#/categoria"
+			aria-expanded="false">Prodotti</a></li>
+	</ul>
+</div>

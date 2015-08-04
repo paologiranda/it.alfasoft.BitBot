@@ -2,27 +2,23 @@
 
 angular.module('bitBotApp')
  .controller('MainCtrl',['$scope','dataSc','$http','$location','$window','callItem',
-                         'API_CONF','callLoggato',
-    function($scope,dataSc,$http,$location,$window,callItem,apiConf,callLoggato) {
+                         'API_CONF','callLoggato','loginCommon',
+    function($scope,dataSc,$http,$location,$window,callItem,apiConf,callLoggato,loginCommon) {
 	 
-	 
-	 
-	 
-	 
-	 
-	 callItem.query(function(data){// 	chiamata tutti prodotti presenti nel magazzino	
+	 callItem.query(function(data){// chiamata tutti prodotti presenti nel
+									// magazzino
 		 $scope.prodotti = data;
 	 });
 	 
 	 
-	 $scope.showUserData = false;// chiamata servizio che restituisce se sei loggato o meno
-//     callLoggato.query(function(result){
 	 	var x = apiConf.server + apiConf.base_url + '/login/loggato';
 	 	$http.get(x)
  		.success(function(data){
     	$scope.userData = data;
-//    	console.log($scope.userData);
-    	$scope.profilo = false;
+    	$scope.isUser = false;
+    	$scope.isAdmin = false;
+    	$scope.loggato = false;
+    	$scope.menuVetrina = true;
 		 if($scope.userData == null){
 			 $scope.loggato = false;
 		 }
@@ -30,13 +26,14 @@ angular.module('bitBotApp')
 			 $scope.loggato = true;
 			 if($scope.userData.profilo == "Admin"){
 				 console.log('Benvenuto' + $scope.userData.profilo);
-				 $scope.profilo = true;
+				 $scope.menuVetrina = false;
+				 $scope.isAdmin = true;
 				 $location.path('/mainAdmin');
 			 }
 			 else if($scope.userData.profilo == "Cliente"){
 				 console.log('Benvenuto Cliente');
-				 $scope.profilo = false;
-				 $scope.showUserData = true;
+				 $scope.isUser = true;
+				 $scope.menuVetrina = true;
 			 }
 			 
 		 }
@@ -45,21 +42,22 @@ angular.module('bitBotApp')
 	        dataSc.setSelectedProd(num);
 	    }
 	   
-   //servizio che distrugge la sessione 
+   // servizio che distrugge la sessione
     $scope.logout = function(){
     	var logout = apiConf.server + apiConf.base_url + '/login/logout';
     	$http.get(logout)
     	.success(function(){
     		 $window.location.reload();		
     	})
-    }
+    };
     var callCateg = apiConf.server + apiConf.base_url + '/prodotti/categoria';
     $http.get(callCateg)
     .success(function(data){
     	$scope.categorie = data;
     })
     
-    //----------------------------LOGIN MODULE FOR HOMEPAGE ---------------------
+    // ----------------------------LOGIN MODULE FOR HOMEPAGE
+	// ---------------------
     
     
     
@@ -67,34 +65,40 @@ angular.module('bitBotApp')
         email: "",
         pwd:"",
      };
-
-     $scope.submitForm = function(){          
-           var userEmail = 'email' + '=' + $scope.user.email + '&';
-           var userPwd = 'password' + '=' + $scope.user.pwd;
-           $scope.userTemp = userEmail + userPwd;
-           $scope.showErrorMail = false;
-           $scope.loginServic =  apiConf.server + apiConf.base_url + '/login/loggin?' + $scope.userTemp;
-           {{$scope.loginServic}};
-           $http({
-             method:'get',
-             url: $scope.loginServic,
-             data: $.param($scope.user),
-            }) 
-           .success(function(data){       	        		   
-        	var callServiceError = apiConf.server + apiConf.base_url + '/errori/errore';
-         	$http.get(callServiceError).
-         	success(function(data){
-         		 console.log(data); 
-         		   if(data !== null){
-         		   		$scope.errore = data;
-				        $scope.showErrorMail = true;  
-				    }
-				    else{
-				         $window.location.reload();
-				         $location.path('/');
-				   }
-         	});    
-  	
-           });
+    $scope.menuCliente = false;
+     $scope.submitForm = function(){                
+    	    	var userEmail = 'email' + '=' + $scope.user.email;
+    	        var userPwd = 'password' + '=' + $scope.user.pwd;
+    	        $scope.userTemp = userEmail + userPwd;
+    	        $scope.showErrorMail = false;
+    	        $scope.loginServic =  apiConf.server + apiConf.base_url + '/login/loggin?' + $scope.userTemp;
+    	        $http({
+    	          method:'get',
+    	          url: $scope.loginServic,
+    	          data: $.param($scope.user),
+    	         }) 
+    	        .success(function(data){    	        		      	
+    	        	$scope.userData = data;  
+    	        	var callServErrore = apiConf.server + apiConf.base_url + '/errori/errore';
+    	        	$http.get(callServErrore).
+	    	        		success(function(data){
+	    	        			var data = data;
+    	        	
+	    	        			if($scope.userData.mail != null && $scope.userData != undefined){
+			    	    		    if($scope.userData.profilo == "Admin"){
+			    	    				 console.log('Benvenuto' + $scope.userData.profilo);   			
+			    	    				 $location.path('/mainAdmin');
+			    	    				 $window.location.reload();
+			    	    			 }
+			    	    			 else if($scope.userData.profilo == "Cliente"){
+			    	    				 console.log('Benvenuto Cliente');
+			    	    				 $scope.menuCliente = true;
+			    	    				 $location.path('/');
+			    	    				 $window.location.reload();
+			    	    			 }
+		    	  			  			 
+	    	        			}
+    	        	})
+    	 })
      }
  }]);
