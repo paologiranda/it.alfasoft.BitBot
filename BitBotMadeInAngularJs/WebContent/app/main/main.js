@@ -55,50 +55,6 @@ angular.module('bitBotApp')
     .success(function(data){
     	$scope.categorie = data;
     })
-    
-    // ----------------------------LOGIN MODULE FOR HOMEPAGE
-	// ---------------------
-    
-    
-    
-    $scope.user = {
-        email: "",
-        pwd:"",
-     };
-    $scope.menuCliente = false;
-     $scope.submitForm = function(){                
-    	    	var userEmail = 'email' + '=' + $scope.user.email;
-    	        var userPwd = 'password' + '=' + $scope.user.pwd;
-    	        $scope.userTemp = userEmail + userPwd;
-    	        $scope.showErrorMail = false;
-    	        $scope.loginServic =  apiConf.server + apiConf.base_url + '/login/loggin?' + $scope.userTemp;
-    	        $http({
-    	          method:'get',
-    	          url: $scope.loginServic,
-    	          data: $.param($scope.user),
-    	         }) 
-    	        .success(function(data){    	        		      	
-    	        	$scope.userData = data;  
-    	        	var callServErrore = apiConf.server + apiConf.base_url + '/errori/errore';
-    	        	$http.get(callServErrore).
-	    	        		success(function(data){
-	    	        			var data = data;
-    	        	
-	    	        			if($scope.userData.mail != null && $scope.userData != undefined){
-			    	    		    if($scope.userData.profilo == "Admin"){
-			    	    				 console.log('Benvenuto' + $scope.userData.profilo);   			
-			    	    				 $location.path('/mainAdmin');
-			    	    				 $window.location.reload();
-			    	    			 }
-			    	    			 else if($scope.userData.profilo == "Cliente"){
-			    	    				 console.log('Benvenuto Cliente');
-			    	    				 $scope.menuCliente = true;
-			    	    				 $location.path('/');
-			    	    				 $window.location.reload();
-			    	    			 }
-		    	  			  			 
-	    	        			}
-    	        	})
-    	 })
-     }
+        	   	 
+  
  }]);

@@ -15,12 +15,14 @@ angular.module('bitBotApp', [
 			    'ngRoute',
 			    'ngSanitize',
 			    'ngTouch',
-			    'bitBotApp.resources',		
+			    'bitBotApp.resources',	
+			    'ngStorage',
+			    'angular-loading-bar'
 			  ])
-			  .config(function ($routeProvider) {
-					       
-				  $routeProvider
-			      .when('/', {
+			  .config(['$routeProvider','$httpProvider', 
+			           function ($routeProvider,$httpProvider) {
+		
+				  $routeProvider.when('/', {
         templateUrl: 'app/main/main.html',
       })
       .when('/about', {
@@ -105,10 +107,6 @@ angular.module('bitBotApp', [
         templateUrl: 'app/admin/mainAdmin.html',
         controller: 'mainAdminCtrl'
       })
-       .when('/confermaEliminazione', {
-        templateUrl: 'app/common/confermaEliminazione.html',
-        controller: 'ConfermaEliminazioneCtrl'
-      })
       .when('/richiediPwd', {
         templateUrl: 'app/registrazione/richiediPwd.html',
         controller: 'richiediPwdCtrl'
@@ -121,7 +119,24 @@ angular.module('bitBotApp', [
       .otherwise({
         templateUrl: '/404.html',
       })
-  })
-
-
+  
+      
+   $httpProvider.interceptors.push(['$q', '$location', '$localStorage', function($q, $location, $localStorage) {
+          return {
+              'request': function (config) {
+                  config.headers = config.headers || {};
+                  if ($localStorage.token) {
+                      config.headers.Authorization = 'Bearer ' + $localStorage.token;
+                  }
+                  return config;
+              },
+              'responseError': function(response) {
+                  if(response.status === 401 || response.status === 403) {
+                      $location.path('/signin');
+                  }
+                  return $q.reject(response);
+              }
+          };
+      }])      
+}]); 
 

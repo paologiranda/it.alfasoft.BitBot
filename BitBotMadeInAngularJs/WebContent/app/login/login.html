@@ -1,5 +1,5 @@
 <div ng-controller="LoginCtrl">
-	<div ng-if="wrong" class="alert alert-danger" role="alert">
+	<div ng-if="isLoginwrong" class="alert alert-danger" role="alert">
 		<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="false"></span>{{
 		wrong }}
 	</div>
@@ -9,16 +9,16 @@
 		<div class="col-sm-6">
 			<form ng-submit="submitForm()">
 				<fieldset>
-					<label>Name</label>
+					<label>Email</label>
 					<p>
-						<input type="email" class="form-control" ng-model="user.email"
+						<input type="email" class="form-control" ng-model="email"
 							required placeholder="Nome utente">
 					</p>
 
 					<div class="form-group">
 						<label>Password</label>
 						<p>
-							<input type="password" class="form-control" ng-model="user.pwd"
+							<input type="password" class="form-control" ng-model="password"
 								required placeholder="Password">
 						</p>
 					</div>

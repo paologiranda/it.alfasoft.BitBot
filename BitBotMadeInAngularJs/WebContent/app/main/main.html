@@ -2,22 +2,11 @@
 	<hr>
 	<slide-show ></slide-show>
 	
-	<!-- <div class="row" align="center">
-		<div class="col-lg-12">
-			<div class="input-group" style="margin-bottom: 50px;">
-				<input type="text" class="form-control" ng-model="searchItem"
-					placeholder="Search for..."> <span class="input-group-btn">
-					<button class="btn btn-default" type="button">Go!</button>
-				</span>
-			</div>
-		</div>
-	</div> -->
 	<div style="margin-bottom: 50px;"></div>
 	<div class="row">
 		<div class="col-lg-7">
 			<div ng-repeat="x in prodotti | filter:searchItem |limitTo:4 ">
-
-				<div class="col-lg-6" align="center">
+  				<div class="col-lg-6" align="center">
 					<h4>
 						<p>
 							<strong>{{ x.nome }}</strong>

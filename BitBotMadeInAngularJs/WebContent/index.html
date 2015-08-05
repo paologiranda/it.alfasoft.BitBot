@@ -10,7 +10,7 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <link rel="icon" href="favicon.ico" />
     <!-- build:css(.) styles/vendor.css -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.css" />
     <!-- bower:css -->
     <!-- endbower -->
     <!-- endbuild -->
@@ -50,15 +50,17 @@
 
     <!-- build:js(.) app/vendor.js -->
     <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="vendor/jquery/dist/jquery.js"></script>
+    <script src="vendor/angular/angular.js"></script>
+    <script src="vendor/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="vendor/angular-animate/angular-animate.js"></script>
+    <script src="vendor/angular-cookies/angular-cookies.js"></script>
+    <script src="vendor/angular-resource/angular-resource.js"></script>
+    <script src="vendor/angular-route/angular-route.js"></script>
+    <script src="vendor/angular-sanitize/angular-sanitize.js"></script>
+    <script src="vendor/angular-touch/angular-touch.js"></script>
+    <script src="vendor/angular-token/ngStorage.js"></script>
+	<script src="vendor/angular-token/loading-bar.js"></script>
 
     <!-- endbower -->
     <!-- endbuild -->
@@ -72,9 +74,6 @@
         <script src="app/main/directive/main-directives.js"></script>
  
  		<!-- ADMIN -->
-        <script src="app/admin/inserisciProdotto.js"></script>
-        <script src="app/admin/listaClienti.js"></script>
-        <script src="app/admin/prodottiInMag.js"></script>
         <script src="app/admin/mainAdmin.js"></script> 
         
         
@@ -83,16 +82,10 @@
         
         
         <!-- ACQUISTO -->
-        <script src="app/acquisto/carrello.js"></script>
-        <script src="app/acquisto/sceltapagamento.js"></script>
+        <script src="app/acquisto/acquisto.js"></script>
         
         
         <!-- COMMON -->
-        <script src="app/common/about.js"></script>
-        <script src="app/common/contact.js"></script>
-        <script src="app/common/header.js"></script>
-        <script src="app/common/footer.js"></script>
-        <script src="app/common/confermaEliminazione.js"></script>
         <script src="app/common/directive/common-directives.js"></script>
         <script src="app/common/services/loginCommon.js"></script>
           
@@ -100,11 +93,11 @@
         <!-- LOGIN -->
         <script src="app/login/login.js"></script> 
         <script src="app/login/areariservata.js"></script>
-        <script src="app/login/services/loginService.js"></script>
+        <script src="app/login/services/services.js"></script>
+          
           
         <!-- SERVICES -->
         <script src="app/services/addprod.js"></script>
-        <!--  <script src="app/services/loginService.js"></script> -->
         <script src="app/services/categoriaService.js"></script>
         <script src="app/services/data.js"></script>
         <script src="app/services/subCatService.js"></script>

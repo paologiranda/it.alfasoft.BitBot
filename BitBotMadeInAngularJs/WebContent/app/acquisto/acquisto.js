@@ -46,4 +46,14 @@ angular.module('bitBotApp')
 			$location.path('/sceltaPagamento')					
 		})
 	}
-}]);
+}])
+ .controller('SceltapagamentoCtrl', function ($scope,$http) {
+
+	  var callService = 'http://localhost:8081/rest/ordini/confermaOrdine';	
+	  $http.get(callService)  
+	  .success(function(data){
+		  console.log(data);
+	  })
+	  
+	  
+  });
