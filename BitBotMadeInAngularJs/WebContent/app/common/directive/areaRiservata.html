@@ -4,7 +4,7 @@
 			data-target="#myModal">Sign In</a></li>
 
 		<li ng-if="loggato"><p class="animate-repeat">
-				Welcome<br> {{ userData.mail }}
+				<welcome><small>Benvenuto {{ userData.mail }}</small></welcome>
 			</p></li>
 		<li ng-if="!loggato"><a ng-href="#/registrazione">Sign Up</a></li>
 		<li ng-if="loggato"><a ng-click="logout()" ng-href="#/logoutSuccess">Sign out</a></li>
