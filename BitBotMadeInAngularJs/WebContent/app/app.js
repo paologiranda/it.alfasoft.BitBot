@@ -113,7 +113,7 @@ angular.module('bitBotApp', [
       })
       .when('/myShopping', {
         templateUrl: 'app/clienti/myShopping.html',
-        controller: 'richiediPwdCtrl'
+        controller: 'myShopppingCtrl'
       })
       
       .otherwise({

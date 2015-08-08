@@ -32,15 +32,11 @@ angular.module('bitBotApp')
         	 		}else {
 					   $localStorage.token = res.token;
 					   $window.location.reload();
-					    window.location = "/";  
+					   $window.location = "/";  
 					   
         	 		}
-				 },
-				 function(){
-				    $rootScope.error = 'Failed to signin';
-				 })
-    	
-				 $scope.token = $localStorage.token;
+				 }),
+				  $scope.token = $localStorage.token;
     	
 //    	var userEmail = 'email' + '=' + $scope.user.email + '&';
 //        var userPwd = 'password' + '=' + $scope.user.pwd;
