@@ -10,17 +10,15 @@
 						<th>Data Ordine</th>
 						<th>Data arrivo</th>
 						<th>Stato</th>
-						<th>Item descrizione</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr ng-repeat="myProduct in myProducts">
 						<td>{{$index+1}}</td>
-						<td>{{}}</td>
+						<td>{{}}name</td>
 						<td>{{myProduct.dataOrdine.dayOfMonth}}/{{myProduct.dataOrdine.month}}/{{myProduct.dataOrdine.year}}</td>
 						<td>{{myProduct.dataArrivo.dayOfMonth}}/{{myProduct.dataArrivo.month}}/{{myProduct.dataArrivo.year}}</td>
  						<td>{{myProduct.stato}}</td>
-						<td>{{myProduct.descrizione}}</td>
 					</tr>
 				</tbody>
 			</table>

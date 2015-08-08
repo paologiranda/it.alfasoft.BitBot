@@ -1,5 +1,26 @@
 <div class="row">
 	<div class="col-md-12">
-		<span ng-repeat = "item in items"><pre>{{item.stato}}</pre></span>
+		<div class="container-fluid">
+		<table class="table">
+				<thead>
+					<tr>
+						<th data-field="id">Item ID</th>
+						<th data-field="name">Item Name</th>
+						<th>Data Ordine</th>
+						<th>Data arrivo</th>
+						<th>Stato</th>
+					</tr>
+				</thead>
+				<tbody>
+				<tr ng-repeat="item in items">
+						<td>{{$index+1}}</td>
+						<td>{{}}name</td>
+						<td>{{item.dataOrdine.dayOfMonth}}/{{item.dataOrdine.month}}/{{item.dataOrdine.year}}</td>
+						<td>{{item.dataArrivo.dayOfMonth}}/{{item.dataArrivo.month}}/{{item.dataArrivo.year}}</td>
+ 						<td>{{item.stato}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </div>

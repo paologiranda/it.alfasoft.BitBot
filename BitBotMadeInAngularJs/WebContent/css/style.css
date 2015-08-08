@@ -3,7 +3,12 @@
 	background-image: url(/images/img_back.jpg);
 	 opacity: .3;
 }
-
+welcome{
+	color:#020202;
+font-size:14px;
+font-weight:600;
+  border-right: 1px solid #dedddd;
+}
 html, body{
     font-size: 100%;
 	background:	#fff;
