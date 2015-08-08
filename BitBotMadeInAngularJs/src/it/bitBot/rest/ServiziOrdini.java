@@ -2,8 +2,14 @@ package it.bitBot.rest;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import it.alfasoft.ecommerce.acquisto.GestioneOrdini;
+import it.alfasoft.ecommerce.acquisto.IDAOOrdine;
+import it.alfasoft.ecommerce.acquisto.IDAOProdottiOrdinati;
+import it.alfasoft.ecommerce.acquisto.DAO.DAOOrdine;
+import it.alfasoft.ecommerce.acquisto.DAO.DAOProdottiOrdinati;
+import it.alfasoft.ecommerce.acquisto.dto.Ordine;
 import it.alfasoft.ecommerce.acquisto.dto.ProdottoOrdinato;
 import it.alfasoft.ecommerce.gestioneAppuntamenti.ErroreSistema;
 import it.alfasoft.ecommerce.integration.MagazzinoMock;
@@ -160,5 +166,69 @@ public class ServiziOrdini {
 		Gson gs=new Gson();
 		System.out.println(gs);
 		return gs.toJson(importo);
+	}
+	
+	
+	/**
+	 * Lista di tutti gli acquisti fatti da un cliente
+	 * @param codCliente
+	 * @return
+	 * @throws ClassNotFoundException
+	 */
+	@Path("/acquistiCliente")
+	@GET
+	@Produces("application/json")
+	public String acquistiCliente(@QueryParam ("codCliente") String codCliente) throws ClassNotFoundException{
+		
+		IDAOOrdine daoodine = new DAOOrdine();
+		int codiceCliente = Integer.valueOf(codCliente);
+		
+		ArrayList<Ordine> listaOrdini = new ArrayList<Ordine>();
+		
+		try {
+			ArrayList<Object>listaTemporane = (ArrayList<Object>) daoodine.leggiOrdine(codiceCliente);
+			 
+			for(Object ordine : listaTemporane){
+				 listaOrdini.add((Ordine)ordine);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		Gson gs = new Gson();
+		System.out.println(gs);
+		return gs.toJson(listaOrdini);
+
+	}
+	
+	
+	/**
+	 * lista di tutti i clienti
+	 * @param codCliente
+	 * @return
+	 * @throws ClassNotFoundException
+	 */
+	@Path("/acquisti")
+	@GET
+	@Produces("application/json")
+	public String acquisti() throws ClassNotFoundException{
+		
+		IDAOOrdine daoodine = new DAOOrdine();
+		//int codiceCliente = Integer.valueOf(codCliente);
+		
+		ArrayList<Ordine> listaOrdini = new ArrayList<Ordine>();
+		
+		try {
+			listaOrdini = (ArrayList<Ordine>) daoodine.letturaOrdini();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		Gson gs = new Gson();
+		System.out.println(gs);
+		return gs.toJson(listaOrdini);
+
 	}
 }
