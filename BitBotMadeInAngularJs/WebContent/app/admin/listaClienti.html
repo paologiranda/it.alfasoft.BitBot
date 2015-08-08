@@ -17,18 +17,20 @@
 			<th data-field="name">Item Name</th>
 			<th>Item Surname</th>
 			<th>Username</th>
+			<th>Codice Cliente</th>
 		</tr>
 	</thead>
 	<tbody>
-		<tr ng-repeat="user in users | filter:searchConsumer">
+		 <tr ng-repeat="user in users | filter:searchConsumer">
 			<td>{{ $index + 1 }}</td>
 			<td>{{ user.nome}}</td>
 			<td>{{ user.cognome }}</td>
 			<td>{{ user.mail }}</td>
+			<td>{{ user.codiceCliente }}</td>
 			<td><a class="btn btn active" role="button"
 				ng-click="cancellaUtente(user)"> <span
 					class="glyphicon glyphicon-remove"></span>
 			</a></td>
 		</tr>
-	</tbody>
+	 </tbody>
 </table>

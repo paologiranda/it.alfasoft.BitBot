@@ -115,6 +115,10 @@ angular.module('bitBotApp', [
         templateUrl: 'app/clienti/myShopping.html',
         controller: 'myShopppingCtrl'
       })
+      .when('/ordiniEffettuati', {
+        templateUrl: 'app/admin/ordiniEffettuati.html',
+        controller: 'ordiniEffettuatiCtrl'
+      })
       
       .otherwise({
         templateUrl: '/404.html',

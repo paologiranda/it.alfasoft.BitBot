@@ -6,37 +6,36 @@ angular.module('bitBotApp')
     function($scope,dataSc,$http,$location,$window,callItem,apiConf,callLoggato,loginCommon) {
 	 
 	 callItem.query(function(data){// chiamata tutti prodotti presenti nel
-									// magazzino
-		 $scope.prodotti = data;
+		   $scope.prodotti = data;
 	 });
 	 
 	 
 	 	var x = apiConf.server + apiConf.base_url + '/login/loggato';
 	 	$http.get(x)
  		.success(function(data){
-    	$scope.userData = data;
-    	$scope.isUser = false;
-    	$scope.isAdmin = false;
-    	$scope.loggato = false;
-    	$scope.menuVetrina = true;
-		 if($scope.userData == null){
-			 $scope.loggato = false;
-		 }
-		 else if($scope.userData != null){
-			 $scope.loggato = true;
-			 if($scope.userData.profilo == "Admin"){
-				 console.log('Benvenuto' + $scope.userData.profilo);
-				 $scope.menuVetrina = false;
-				 $scope.isAdmin = true;
-				 $location.path('/mainAdmin');
+	    	$scope.userData = data;
+	    	$scope.isUser = false;
+	    	$scope.isAdmin = false;
+	    	$scope.loggato = false;
+	    	$scope.menuVetrina = true;
+			 if($scope.userData == null){
+				 $scope.loggato = false;
 			 }
-			 else if($scope.userData.profilo == "Cliente"){
-				 console.log('Benvenuto Cliente');
-				 $scope.isUser = true;
-				 $scope.menuVetrina = true;
+			 else if($scope.userData != null){
+				 $scope.loggato = true;
+				 if($scope.userData.profilo == "Admin"){
+					 console.log('Benvenuto' + $scope.userData.profilo);
+					 $scope.menuVetrina = false;
+					 $scope.isAdmin = true;
+					 $location.path('/mainAdmin');
+				 }
+				 else if($scope.userData.profilo == "Cliente"){
+					 console.log('Benvenuto Cliente');
+					 $scope.isUser = true;
+					 $scope.menuVetrina = true;
+				 }
+				 
 			 }
-			 
-		 }
     });
 	    $scope.selected = function(num){
 	        dataSc.setSelectedProd(num);
@@ -49,12 +48,5 @@ angular.module('bitBotApp')
     	.success(function(){
     		 $window.location.reload();		
     	})
-    };
-    var callCateg = apiConf.server + apiConf.base_url + '/prodotti/categoria';
-    $http.get(callCateg)
-    .success(function(data){
-    	$scope.categorie = data;
-    })
-        	   	 
-  
+    }   	 
  }]);
