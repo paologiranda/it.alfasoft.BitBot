@@ -49,7 +49,17 @@ angular.module('bitBotApp')
                 changeUser({});
                 delete $localStorage.token;
                 success();
-            }
+            },          	
         };
-    }
-]);
+        
+}])
+ .factory('checkError', ['$http','API_CONF',
+           function($http,apiConf){
+	       return {
+	 			check: function(data,success,error){
+					$http.get(apiConf.server + apiConf.base_url + '/errori/errore')
+					.success(success)
+					.error(error)
+	 			},
+	 		} 
+}]);
