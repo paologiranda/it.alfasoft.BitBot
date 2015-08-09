@@ -121,7 +121,7 @@ angular.module('bitBotApp', [
       })
       
       .otherwise({
-        templateUrl: '/404.html',
+        templateUrl: 'assets/404.html',
       })
   
       

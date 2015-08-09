@@ -1,20 +1,12 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name bitBotApp.controller:LoginCtrl
- * @description
- * # LoginCtrl
- * Controller of the bitBotApp
- */
 angular.module('bitBotApp')   
 
-.controller('LoginCtrl',['$scope','$http','$location','$window','API_CONF','$rootScope','generaToken','$localStorage',
-		function ($scope,$http,$location,$window,apiConf,$rootScope,generaToken,$localStorage) {
+.controller('LoginCtrl',['$scope','$http','$location','$window','API_CONF','$rootScope','loginFactory','$localStorage',
+		function ($scope,$http,$location,$window,apiConf,$rootScope,loginFactory,$localStorage) {
     
 
     $scope.isLoginWrong = false;
-    $scope.menuCliente = false;
     
     $scope.submitForm = function(){  
     	
@@ -23,54 +15,19 @@ angular.module('bitBotApp')
            password: $scope.password,
          }
     	 
-         generaToken.send(FormData,
+    	 loginFactory.send(FormData,
         		 function(res){
         	 		console.log(res);
-        	 		if (res.type == "undefined") {
+        	 		if (res.type == false) {
 					     $scope.isLoginWrong = true; 
 					     $scope.wrong = res.data;
         	 		}else {
-					   $localStorage.token = res.token;
+//					   $localStorage.token = res.data.token;
 					   $window.location.reload();
 					   $window.location = "/";  
 					   
         	 		}
-				 }),
-				  $scope.token = $localStorage.token;
-    	
-//    	var userEmail = 'email' + '=' + $scope.user.email + '&';
-//        var userPwd = 'password' + '=' + $scope.user.pwd;
-//        $scope.userTemp = userEmail + userPwd;
-//        $scope.showErrorMail = false;
-//        $scope.loginServic =  apiConf.server + apiConf.base_url + '/login/loggin?' + $scope.userTemp;
-//        $http({
-//          method:'get',
-//          url: $scope.loginServic,
-//          data: $.param($scope.user),
-//         }) 
-//        .success(function(data){       	
-//        	$scope.userData = data; 
-//        	var callServErrore = apiConf.server + apiConf.base_url + '/errori/errore';
-//        	$http.get(callServErrore).
-//	        		success(function(data){
-//	        			if(data != null){
-//	        				$scope.wrong = data;
-//	        			}
-//			        	if($scope.userData.mail != null && $scope.userData != undefined){
-//			    		    if($scope.userData.profilo == "Admin"){
-//			    				 console.log('Benvenuto' + $scope.userData.profilo);   			
-//			    				 $location.path('/mainAdmin');
-//			    				 $window.location.reload();
-//			    			 }
-//			    			 else if($scope.userData.profilo == "Cliente"){
-//			    				 console.log('Benvenuto Cliente');
-//			    				 $scope.menuCliente = true;
-//			    				 $location.path('/');
-//			    				 $window.location.reload();
-//			    			 }   		    
-//			    		 }
-//	        		})
-//        })
+				 })    
     }
 }]);
     

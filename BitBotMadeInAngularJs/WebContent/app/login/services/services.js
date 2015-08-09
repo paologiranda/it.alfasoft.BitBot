@@ -1,41 +1,42 @@
 'use strict';
 
 angular.module('bitBotApp')
-    .factory('generaToken', ['$http', '$localStorage','API_CONF',
+    .factory('loginFactory', ['$http', '$localStorage','API_CONF',
                              function($http, $localStorage,apiConf){
-        function changeUser(user) {
-            angular.extend(currentUser, user);
-        }
+    	 function changeUser(user) {
+             angular.extend(currentUser, user);
+         }
 
-        function urlBase64Decode(str) {
-            var output = str.replace('-', '+').replace('_', '/');
-            switch (output.length % 4) {
-                case 0:
-                    break;
-                case 2:
-                    output += '==';
-                    break;
-                case 3:
-                    output += '=';
-                    break;
-                default:
-                    throw 'Illegal base64url string!';
-            }
-            return window.atob(output);
-        }
+         function urlBase64Decode(str) {
+             var output = str.replace('-', '+').replace('_', '/');
+             switch (output.length % 4) {
+                 case 0:
+                     break;
+                 case 2:
+                     output += '==';
+                     break;
+                 case 3:
+                     output += '=';
+                     break;
+                 default:
+                     throw 'Illegal base64url string!';
+             }
+             return window.atob(output);
+         }
 
-        function getUserFromToken() {
-            var token = $localStorage.token;
-            console.log(token);
-            var user = {};
-            if (typeof token !== 'undefined') {
-                var encoded = token.split('.')[1];
-                user = JSON.parse(urlBase64Decode(encoded));
-            }
-            return user;
-        }
+         function getUserFromToken() {
+             var token = $localStorage.token;
+             console.log(token);
 
-        var currentUser = getUserFromToken();
+             var user = {};
+             if (typeof token !== 'undefined') {
+                 var encoded = token.split('.')[1];
+                 user = JSON.parse(urlBase64Decode(encoded));
+             }
+             return user;
+         }
+
+         var currentUser = getUserFromToken();
        
 
         return {
