@@ -1,6 +1,6 @@
 
 .imgBack{
-	background-image: url(/images/img_back.jpg);
+	/* background-image: url(assets/images/img_back.jpg); */
 	 opacity: .3;
 }
 welcome{
@@ -15,7 +15,7 @@ html, body{
 	font-family: 'Open Sans', sans-serif;
 }
 body{
-  background-image: url(/images/img_bc.png);
+  background-image: url(../images/img_bc.png);
  
 }
 p{
@@ -47,7 +47,7 @@ body a:hover{
   color: #C2c2c2;
 }
 .search form input[type="submit"]{
-  background: url(../images/search.png) no-repeat 13px 9px;
+  background: url(assets/images/search.png) no-repeat 13px 9px;
   width: 45px;
   height: 32px;
   border: none;
@@ -125,7 +125,7 @@ display:inline-block;
 margin-right: 5px;
 }
 .social-icons ul li a.facebook{
-  background: url(/images/img-sprite.png) no-repeat 0px -34px;
+  background: url(../images/img-sprite.png) no-repeat 0px -34px;
   width:32px;
   height:32px;
   display:block;
@@ -226,7 +226,7 @@ background: url(../images/img-sprite.png) no-repeat -133px 0px;
 /*-- //header --*/
 /*-- banner --*/
 .banner{
-background:url(/images/banner1.jpg) no-repeat 0px 0px;
+background:url(assets/images/banner1.jpg) no-repeat 0px 0px;
 background-size:cover;
 -webkit-background-size: cover;
 -o-background-size: cover;
