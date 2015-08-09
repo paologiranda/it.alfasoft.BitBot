@@ -17,17 +17,23 @@ angular.module('bitBotApp')
     	 
     	 loginFactory.send(FormData,
         		 function(res){
-        	 		console.log(res);
-        	 		if (res.type == false) {
-					     $scope.isLoginWrong = true; 
-					     $scope.wrong = res.data;
-        	 		}else {
-//					   $localStorage.token = res.data.token;
-					   $window.location.reload();
-					   $window.location = "/";  
-					   
-        	 		}
-				 })    
+        	 		if (res.type != false) {
+        	 			var callServiceError = apiConf.server + apiConf.base_url + '/errori/errore';
+        	 			$http.get(callServiceError).
+        	 				success(function(data){
+        	 						if(data != null){
+        	 							$scope.isLoginWrong = true; 
+		        	 					$scope.wrong = data;        	 					
+        	 						}
+        	 						else{
+        	 							$localStorage.token = res.data.token;
+		        	 					$window.location.reload();
+		        	 					$window.location = "/";  
+        	 						}
+
+        	 				   })  
+        	 				 }
+        	 		})	 		
     }
 }]);
     
