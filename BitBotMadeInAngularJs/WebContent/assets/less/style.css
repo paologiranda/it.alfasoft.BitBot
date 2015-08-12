@@ -1,7 +1,13 @@
-
+.categoryTitle{
+	margin: 50px 0 50px 0;
+}
 .imgBack{
 	/* background-image: url(assets/images/img_back.jpg); */
 	 opacity: .3;
+}
+.consultaCatologo{
+	margin: 30px 0 30px 0;
+	text-align:center;
 }
 welcome{
 	color:#020202;

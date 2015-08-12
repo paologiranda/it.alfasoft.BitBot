@@ -1,10 +1,14 @@
 <div class="row">
-	<div ng-repeat="x in categorie" align="center">
+	<div ng-repeat="cat in categorie" align="center">
 		<div class="col-sm-6 col-md-6">
-			<p><strong>Categoria:{{ x.categoria }}</strong></p>
-			<img src="assets/images/img_01.png"><br><a
-			class="btn btn-primary" id="{{x.categoria}}" role="button"
-			ng-href="#/sottoCategoria" ng-click="mostraSottoCat(x)">Entra</a>
+		<div class="categoryTitle">
+			<p><strong>{{ cat.categoria }}</strong></p>
+		</div>
+		<div class="categoryTitle">
+		 <img src="assets/images/img_01.png"><br><a
+			class="btn btn-primary" id="{{cat.categoria}}" role="button"
+			ng-href="#/sottoCategoria" ng-click="mostraSottoCat(cat)">Entra</a>
+		</div>
 		</div>
 	</div>
 </div>

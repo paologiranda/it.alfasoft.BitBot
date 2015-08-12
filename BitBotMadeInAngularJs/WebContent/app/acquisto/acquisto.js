@@ -5,7 +5,7 @@ angular.module('bitBotApp')
                             function($scope, addProd, $http, $location,$window,apiConf) {
 
 	$scope.elemAggiunto = addProd.getElemSelect();
-	
+	$scope.UserNotLoggato = false;
 	var carrelloCallService =  apiConf.server + apiConf.base_url + '/ordini/visualizzaCarrello?codCliente=9';
 	$http.get(carrelloCallService)
 	.success(function(data){
@@ -39,8 +39,7 @@ angular.module('bitBotApp')
 		.success(function(data) {
 			$scope.loggato = data;
 			if ($scope.loggato == null) {
-			console.log('Devi essere loggato');
-			$location.path('/login');
+				$scope.UserNotLoggato = true;
 			}
 			else
 			$location.path('/sceltaPagamento')					
