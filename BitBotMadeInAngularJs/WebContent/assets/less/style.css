@@ -35,29 +35,16 @@ body a:hover{
 /*-- header --*/
 /*-- header --*/
 .search {
-  float: right;
-  border: 1px solid #d2cfcf;
-  margin: 7px 15px 0 0;
+ 
 }
-.search input[type="search"] {
+ .search input[type="search"] {
   border: none;
   outline: none;
   padding: 5px 10px;
   font-size: 14px;
   color: #C2c2c2;
-}
-.search form input[type="submit"]{
-  background: url(assets/images/search.png) no-repeat 13px 9px;
-  width: 45px;
-  height: 32px;
-  border: none;
-  margin: 0 0 0 -4px;
-  padding:0;
-  border-left: 1px solid #d2cfcf;
-  border-right:none;
-  border-bottom:none;
-  border-top:none;
-}
+} 
+
 .logo{
 float:left;
 }

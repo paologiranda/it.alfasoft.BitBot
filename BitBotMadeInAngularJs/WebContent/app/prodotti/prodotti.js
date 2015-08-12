@@ -94,9 +94,10 @@ angular.module('bitBotApp')
                  	     url : url,
                  	    data: $.param($scope.prodotti)
                  	    });
-                 	}
-    }])
-     .controller('itemSubCategoryCtrl',['$scope','$http','subCatService','addToCarr','API_CONF',
+                 	$window.location.reload();
+                 	}           
+}])
+.controller('itemSubCategoryCtrl',['$scope','$http','subCatService','addToCarr','API_CONF',
 		  function ($scope,$http,subCatService,addToCarr,apiConf) {
 	  	  
 		  $scope.prod = subCatService.getSelectedProd();
