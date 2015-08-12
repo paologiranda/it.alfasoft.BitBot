@@ -22,10 +22,11 @@ public class Errore {
 		String errore = null;
 		
 		errore = (String) request.getSession().getAttribute("errore");
-		request.getSession().removeAttribute("errore");
+//		request.getSession().removeAttribute("errore");
 		Gson gson = new Gson();
 		String result = gson.toJson(errore);
+		System.out.println(result);
 		
-		return result;
+		return "[" + result + "]";
 	}
 }

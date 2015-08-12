@@ -37,9 +37,8 @@ angular.module('bitBotApp')
          }
 
          var currentUser = getUserFromToken();
-       
 
-        return {
+         return {
         	send: function(data, success, error) {
                 $http.get(apiConf.server + apiConf.base_url + '/login/loggin?email=' + data.email +'&password=' + data.password)
                 .success(success)
@@ -49,17 +48,18 @@ angular.module('bitBotApp')
                 changeUser({});
                 delete $localStorage.token;
                 success();
-            },          	
-        };
-        
+            },               		
+            	     
+        }     
 }])
- .factory('checkError', ['$http','API_CONF',
-           function($http,apiConf){
-	       return {
-	 			check: function(data,success,error){
-					$http.get(apiConf.server + apiConf.base_url + '/errori/errore')
-					.success(success)
-					.error(error)
-	 			},
-	 		} 
+.factory('erroriProvenientiDalServer', ['$http','API_CONF','$resource',
+                    function($http,apiConf,$resource){
+	
+
+		 var url = apiConf.server + apiConf.base_url + '/errori/errore';
+		 var result = $resource(url,{
+			save:{method:'GET'}
+		 });
+		 return result;
+	
 }]);
