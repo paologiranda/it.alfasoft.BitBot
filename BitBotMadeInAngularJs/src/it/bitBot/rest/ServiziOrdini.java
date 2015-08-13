@@ -88,8 +88,9 @@ public class ServiziOrdini {
 			}
 		}
 		
-		request.getSession().setAttribute("carrello", carrello);	
-		return ris;
+		request.getSession().setAttribute("carrello", carrello);
+		System.out.println(ris);
+		return "[" + ris + "]";
 	}
 	
 	@GET

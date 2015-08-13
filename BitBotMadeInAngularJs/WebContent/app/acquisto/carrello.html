@@ -1,8 +1,9 @@
 
 <span ng-if="UserNotLoggato" class="alert alert-danger" role="alert">
 	<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="false"></span>
-	Devi essere loggato prima di poter procedere con l acquisto
+	<a ng-href="#/login">Devi essere loggato prima di poter procedere con l acquisto</a>
 </span>
+
 
 <span ng-if="carrello == null">
 	<div class="consultaCatologo">
@@ -13,7 +14,7 @@
 	<hr>
 </span>
 
-<div class="page-header" ng-if="carrello != null">
+<div class="page-header" ng-if="carrello!= null">
 	<div align="right" style="margin-bottom: 10px;">
 		<a ng-click="empty()" class="btn btn active">Svuota carrello</a>
 	</div>

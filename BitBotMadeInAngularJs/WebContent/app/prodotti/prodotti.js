@@ -60,41 +60,35 @@ angular.module('bitBotApp')
 				//console.log(categ);				
 		}
    }])
-    .controller('DescrizioneCtrl',['$scope','dataSc','addProd','$http','$window',
-                                 function ($scope,dataSc,addProd,$http, $window) {
+    .controller('DescrizioneCtrl',['$scope','dataSc','addProd','$http','addToShop',
+                                 function ($scope,dataSc,addProd,$http,addToShop) {
      	
       $scope.selectProd = dataSc.getSelectedProd();
  
         $scope.add = function(elemento){
             addProd.setElemSelect(elemento);
-           	var codProd = 'codProd' + '=' + $scope.selectProd.codice + '&';
-            var qta = 'qta' + '=' + '1'; 
-           	var prodSelez = codProd + qta;
-            
-            var url = 'http://localhost:8081/rest/ordini/inserisciCarrello?'+ prodSelez;
-           $http({
-            method : "get",
-            url : url,
-            data: $.param($scope.selectProd)
+            var itemSelected = {
+            	codProd: $scope.selectProd.codice,
+            	qta: 1,
+            }
+            addToShop.buy(itemSelected,
+            		function(res){
             })
-        $window.location.reload();
+
        } 
   }])
-.controller('descrizione1Ctrl',['$scope','addToCarr','$http','API_CONF','$window',
-          function ($scope,addToCarr,$http,apiConf,$window) {
+.controller('descrizione1Ctrl',['$scope','addToCarr','$http','addToShop',
+          function ($scope,addToCarr,$http,addToShop) {
                $scope.prodotti = addToCarr.getProd();  
                $scope.add = function(product){
                  	addToCarr.setProd(product);
-                    var codProd = 'codProd' + '=' + $scope.prodotti.codice + '&';
-                    var qta = 'qta' + '=' + '1'; 
-                    var prodSelez = codProd + qta;
-                    var url =  apiConf.server + apiConf.base_url + '/ordini/inserisciCarrello?'+ prodSelez;
-                 	$http({
-                 	    method : "get",
-                 	     url : url,
-                 	    data: $.param($scope.prodotti)
-                 	    });
-                 	$window.location.reload();
+                    var itemSelected = {
+                        	codProd: $scope.prodotti.codice,
+                        	qta: 1,
+                        }
+                        addToShop.buy(itemSelected,
+                        		function(res){
+                        })
                  	}           
 }])
 .controller('itemSubCategoryCtrl',['$scope','$http','subCatService','addToCarr','API_CONF',
