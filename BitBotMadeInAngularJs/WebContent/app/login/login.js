@@ -18,8 +18,8 @@ angular.module('bitBotApp')
     		 		if (res == "") {     		 			
     		 			erroriProvenientiDalServer.query(function(data){
     		 				$scope.errorFromServer = true; 
-    	 					$scope.wrong = data;        	
-    		 			 });
+    	 					$scope.new_string=data; 
+    		 			});
     		 		}
     			    else{
 //						$localStorage.token = res.data.token;

@@ -25,8 +25,9 @@ public class Errore {
 //		request.getSession().removeAttribute("errore");
 		Gson gson = new Gson();
 		String result = gson.toJson(errore);
-		System.out.println(result);
-		
-		return "[" + result + "]";
+//		System.out.println(result);
+		String new_String = result.replace("it.alfasoft.ecommerce.login.LoginErrato: ", "");
+		System.out.println(new_String);
+		return "[" + new_String + "]";
 	}
 }
