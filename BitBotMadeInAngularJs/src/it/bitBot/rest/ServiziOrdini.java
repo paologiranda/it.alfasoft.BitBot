@@ -2,15 +2,16 @@ package it.bitBot.rest;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import it.alfasoft.ecommerce.acquisto.GestioneOrdini;
 import it.alfasoft.ecommerce.acquisto.IDAOOrdine;
-import it.alfasoft.ecommerce.acquisto.IDAOProdottiOrdinati;
 import it.alfasoft.ecommerce.acquisto.DAO.DAOOrdine;
-import it.alfasoft.ecommerce.acquisto.DAO.DAOProdottiOrdinati;
 import it.alfasoft.ecommerce.acquisto.dto.Ordine;
 import it.alfasoft.ecommerce.acquisto.dto.ProdottoOrdinato;
+import it.alfasoft.ecommerce.clienti.bo.ClienteNome;
+import it.alfasoft.ecommerce.clienti.dao.DaoClienti;
 import it.alfasoft.ecommerce.gestioneAppuntamenti.ErroreSistema;
 import it.alfasoft.ecommerce.integration.MagazzinoMock;
 import it.alfasoft.ecommerce.integration.dao.DAOMagazzino;
@@ -38,6 +39,7 @@ public class ServiziOrdini {
 	@Context
 	HttpServletRequest request;
 	IDAOMagazzino mg = null;
+	private String url="jdbc:oracle:thin:@//localhost:1521/XE";
 
 	@Path("/inserisciCarrello")
 	@GET
@@ -183,6 +185,8 @@ public class ServiziOrdini {
 		
 		IDAOOrdine daoodine = new DAOOrdine();
 		int codiceCliente = Integer.valueOf(codCliente);
+		List<Object> risposta = new LinkedList<Object>();
+		
 		
 		ArrayList<Ordine> listaOrdini = new ArrayList<Ordine>();
 		
@@ -193,14 +197,28 @@ public class ServiziOrdini {
 				 listaOrdini.add((Ordine)ordine);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		
+		ClienteNome cliente =  new ClienteNome();
+		DaoClienti daoClienti =  new DaoClienti(url);
+		
+		try {
+			cliente = daoClienti.nomeCliente(Integer.parseInt(codCliente));
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		if(cliente!=null && listaOrdini!=null){
+			risposta.add(cliente);
+			risposta.add(listaOrdini);
 		}
 		
 		Gson gs = new Gson();
 		System.out.println(gs);
-		return gs.toJson(listaOrdini);
-
+		//return gs.toJson(listaOrdini);
+		return gs.toJson(risposta);
 	}
 	
 	
