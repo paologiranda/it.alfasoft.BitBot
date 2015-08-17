@@ -12,10 +12,8 @@
 	</path>
 
 	<target name="init">
-		<delete dir="${dist}/lib">
-		</delete>
-		<delete dir="${build}">
-		</delete>
+		<delete dir="${dist}/lib"></delete>
+		<delete dir="${build}"></delete>
 		<tstamp />
 		<mkdir dir="${build}" />
 		<copy todir="${build}">
@@ -34,6 +32,8 @@
 				<pathelement location="lib/ojdbc6.jar" />
 			</classpath>
 		</sql>
+		<delete dir="report"></delete>
+		<mkdir dir="report" />
 	</target>
 
 	<target name="compile" depends="init" description="compile the source ">
