@@ -1,0 +1,50 @@
+Caso d'uso: Selezione prodotti
+1. Utente: seleziona un prodotto dal catalogo.
+2. Sistema: crea il carrello e mette dentro il prodotto.
+3. Utente: termina la selezione dei prodotti. FINE
+
+2.1 Sistema: se non è il primo prodotto selezionato dal cliente
+	     inserisce il prodotto nel carrello già creato.
+3.1 Utente: continua la selezione dei prodotti e torna al punto 1.
+
+////////////////////////////////////////
+
+Caso d'uso: Acquisto prodotti (include Login)
+1. Sistema: se l'utente è loggato, riceve una lista dei prodotti selezionati
+	    e il codice cliente. Chiede all'utente la conferma per procedere all'acquisto.
+2. Utente: conferma l'acquisto dei prodotti selezionati.
+3. Sistema: crea un ordine sospeso (non pagato) con i prodotti selezionati.
+	    Chiede all'utente i dati per procedere al pagamento.
+4. Utente: inserisce i dati per il pagamento e conferma il pagamento.
+5. Sistema: riceve,controlla e passa i dati al sistema esterno di pagamento
+	    e rimane in attesa.
+6. Sistema: riceve conferma dell'avvenuto pagamento dal sistema esterno e la
+	    comunica all'utente. Contestualmente cambia lo stato dell'ordine. FINE
+
+2.1 Utente: non conferma l'acquisto. FINE
+4.1 Utente: non conferma il pagamento. FINE
+5.1 Sistema: riceve i dati, li controlla e avvisa l'utente che non sono corretti.
+	     Chiede all'utente di reinserire i dati per il pagamento.
+	     Va al punto 4.
+6.1 Sistema: riceve notifica del fallimento del pagamento dal sistema esterno e 
+	     la comunica all'utente. Torna al punto 4.
+
+/////////////////////////////////////////
+
+Caso d'uso: Login
+1. Sistema: verifica lo stato dell'utente: utente loggato. FINE
+
+1.2 Sistema: verifica lo stato dell'utente: utente non loggato.
+	     Chiede le credenziali all'utente.
+1.3 Utente: inserisce le credenziali per loggarsi (nome e password).
+1.4 Sistema: controlla i dati inseriti e riconosce l'utente. FINE
+1.4.1 Sistema: non riconosce i dati inseriti dall'utente. Torna al punto 1.2.
+
+/////////////////////////////////////////
+
+Caso d'uso: Prenotazione prodotto
+1. Utente: prenota un prodotto non disponibile dal catalogo.
+2. Sistema: crea una prenotazione del prodotto e la comunica all'utente. FINE
+
+2.1 Sistema: comunica all'utente che non è disponibile una prenotazione per 
+	     il prodotto selezionato. FINE

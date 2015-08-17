@@ -1,0 +1,37 @@
+
+Table
+Data
+Indexes
+Model
+Constraints
+Grants
+Statistics
+UI Defaults
+Triggers
+Dependencies
+SQL
+
+CREATE TABLE  "MAGAZZINO" 
+   (	"CODICE" VARCHAR2(10), 
+	"NOME" VARCHAR2(10), 
+	"CATEGORIA" VARCHAR2(15), 
+	"SOTTOCATEGORIA" VARCHAR2(10), 
+	"TIPO" VARCHAR2(10), 
+	"DESCRIZIONE" VARCHAR2(30), 
+	"QTA" NUMBER(5,0), 
+	"PREZZO" NUMBER(5,0), 
+	"RISERVATOAZIENDA" VARCHAR2(10), 
+	 CONSTRAINT "MAGAZZINO_PK" PRIMARY KEY ("CODICE") ENABLE
+   ) ;
+
+CREATE OR REPLACE TRIGGER  "BI_MAGAZZINO" 
+  before insert on "MAGAZZINO"               
+  for each row  
+begin   
+  if :NEW."CODICE" is null then 
+    select "MAGAZZINO_SEQ".nextval into :NEW."CODICE" from dual; 
+  end if; 
+end; 
+
+/
+ALTER TRIGGER  "BI_MAGAZZINO" ENABLE;

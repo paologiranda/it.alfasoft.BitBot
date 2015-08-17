@@ -1,0 +1,20 @@
+angularjs
+
+
+- mettere apposto aggiunta dei prodotti al carrello
+- mettere apposto visualizzazione dei prodotti nel carrello
+- inviare il carrello(prodotti scelti) e finire l'acquisto(secondo l'utente loggato)
+
+
+servizi
+
+- mettere apposto login
+- modificare servizio login in modo che restituisca solo email se viene loggato l'utente(o altro e non tutto l'oggetto utente)
+- aggiungere servizio che controlli se un utente è loggato, se è logato restituisce l'utente(email...)
+- fare il logout
+- aggiugere servizio che restituisca la lista delle sottocategorie.
+
+
+
+
+

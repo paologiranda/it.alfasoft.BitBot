@@ -1,0 +1,55 @@
+
+Consultazione sito
+
+Scenario base: ricerca per categoria 
+ 1. Sistema: visualizzo menu (chi siamo, contatti, area clienti e ricerca)
+ 2. Utente:  scelgo ricerca per categoria
+ 3. Sistema: visualizza menu di ricerca (informatica,elettronica, prodotti personalizzati per le aziende)
+ 4. Utente:  scelgo una categoria 
+*5. Sistema: controllo se la categoria esiste
+ 5. Sistema: visualizzo i prodotti (prezzo,sconto,disponibilità) di quella categoria ordinati per prezzo
+ 6. Utente:  scelgo prodotto
+ 7. Sistema: controllo se il prodotto è presente nell'elenco
+*8. Sistema: visualizzo dettagli del prodotto
+
+5.1. Sistema: La categoria non esiste, ritorno al punto 3		
+8.1. Sistema: Il prodotto non è presente, gestisco l'eccezione e ritorno al punto 6  
+
+
+
+Scenario base: ricerca su tutto
+ 1. Sistema: visualizzo menu (chi siamo, contatti, area clienti e ricerca)
+ 2. Utente:  scelgo ricerca su tutto
+ 3. Sistema: visualizzo i prodotti (categoria, prezzo, sconto, disponibilità) ordinati per categoria e poi per prezzo
+ 4. Utente:  scelgo prodotto
+ 5. Sistema: controllo se il prodotto è presente nell'elenco
+*6. Sistema: visualizzo dettagli del prodotto
+		
+6.1: Sistema: Il prodotto non è presente, gestisco l'eccezione e ritorno al punto 6  
+
+
+Scenario base: contatti
+ 1. Sistema: visualizzo menu (chi siamo, contatti, area clienti e ricerca)
+ 2. Utente:  scelgo contatti
+ 3. Sistema: visualizzo le informazioni dell'azienda (numero telefonico, email, indirizzo dell'azienda)
+
+Scenario base: chi siamo
+ 1. Sistema: visualizzo menu (chi siamo, contatti, area clienti e ricerca)
+ 2. Utente:  scelgo chi siamo
+ 3. Sistema: visualizzo la descrizione dell'azienda (descrizione, mission, descrizione dipendenti)
+
+Scenario base: area personale
+ 1. Sistema: visualizzo menu (chi siamo, contatti, area clienti e ricerca)
+ 2. Utente:  scelgo area clienti
+ 3. Sistema: controllo se l'utente è loggato
+*4. Sistema: visualizzo il menu dell'area personale
+
+
+4.1 Sistema: l'utente non è loggato richiedo i dati per il login
+4.2 Sistema: l'utente non è loggato richiedo di effettuare la registrazione
+
+
+
+
+
+

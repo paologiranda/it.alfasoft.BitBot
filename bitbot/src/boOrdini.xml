@@ -1,0 +1,18 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean 
+	    id="boGestioneOrdini" 
+	    class="it.alfasoft.ecommerce.acquisto.GestioneOrdini">
+		<property name="daoOrdine" ref="daoOrdine"></property>
+		<property name="daoProdottiOrdinati" ref="daoProdottiOrdinati"></property>
+	</bean>
+	
+	<bean 
+		id="boGestionePrenotazioni"
+		class="it.alfasoft.ecommerce.acquisto.GestionePrenotazioni">
+		<property name="daoPrenotazioni" ref="daoPrenotazioni"></property>
+	</bean>
+	<import resource="daoOrdine.xml"/>
+</beans>

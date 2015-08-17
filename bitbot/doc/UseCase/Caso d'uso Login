@@ -1,0 +1,26 @@
+Caso d'uso Gestione Admin
+
+Scenario base: Registrazione Admin
+1.Sistema: Inserire Dati
+2.Utente: Inserisce i dati(nome,cognome,password)
+3.Sistema: Aggiungo admin
+
+
+Scenario Login: login come admin
+1.Sistema: Richiede dati(nome,cognome,password)
+2.Utente:inserisce i dati
+3.Sistema: Verifica dati e sono corretti
+4.Sistema Effettua login
+
+
+3.1 Sistema: Verifica i dati e non sono corretti
+	3.1.1 Sistema: richiede nuovamente i dati 
+	
+
+Scenario Modifica: modifica dati
+
+1. Utente: Effettua login
+2. Sistema: Chiede i nuovi dati
+3. Utente: inserisce nuovi dati
+4. Sistema : modifica l'utente
+

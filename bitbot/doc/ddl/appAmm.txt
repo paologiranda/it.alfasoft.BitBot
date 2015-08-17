@@ -1,0 +1,74 @@
+        
+ 
+
+
+
+
+
+
+
+
+
+Table 
+
+Data 
+
+Indexes 
+
+Model 
+
+Constraints 
+
+Grants 
+
+Statistics 
+
+UI Defaults 
+
+Triggers 
+
+Dependencies 
+
+SQL 
+
+ 
+CREATE TABLE  "AMMINISTRATORI" 
+   (	"IDADMIN" NUMBER(10,0), 
+	"NOME" VARCHAR2(25) NOT NULL ENABLE, 
+	"COGNOME" VARCHAR2(25) NOT NULL ENABLE, 
+	"PASSWORD" NVARCHAR2(16) NOT NULL ENABLE, 
+	 CONSTRAINT "AMMINISTRATORI_PK" PRIMARY KEY ("IDADMIN") ENABLE
+   ) ;
+
+CREATE OR REPLACE TRIGGER  "BI_AMMINISTRATORI" 
+  before insert on "AMMINISTRATORI"               
+  for each row  
+begin   
+  if :NEW."IDADMIN" is null then 
+    select "AMMINISTRATORI_SEQ".nextval into :NEW."IDADMIN" from dual; 
+  end if; 
+end; 
+
+/
+ALTER TRIGGER  "BI_AMMINISTRATORI" ENABLE;
+
+
+
+
+
+
+ 
+CREATE TABLE  "APPUNTAMENTI" 
+   (	"DATA" TIMESTAMP (0), 
+	"IDADMIN" NUMBER(10,0), 
+	"DESCRIZIONE" VARCHAR2(250), 
+	"CODICECLIENTE" NUMBER(10,0) NOT NULL ENABLE, 
+	 CONSTRAINT "APPUNTAMENTI_CON" PRIMARY KEY ("DATA", "IDADMIN") ENABLE
+   ) ;
+
+
+
+
+    
+  
+  

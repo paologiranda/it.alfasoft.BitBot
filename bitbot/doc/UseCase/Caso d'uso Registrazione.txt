@@ -1,0 +1,19 @@
+Caso d'uso : Registrazione
+
+Condizioni iniziali :
+Utente -> che puo' essere privato oppure azienda.
+NB : Non sono previsti clienti inattivi.
+
+1) L'utente accede al sito
+2) Clicca su registra
+3) Il sistema apre una pagina di registrazione
+	4a) Se privato clicca su privato : il sistema elenca i campi per privati che possono essere :
+		Nome, cognome, codice fiscale, indirizzo, provincia, comune, cap, telefono fisso o cellulare, mail, scala e piano.
+		I piu' importanti saranno : richiesta password e conferma password, username (che sara' la mail).
+ 	4b) Se azienda si devono inserire : come nome la ragione sociale, come codice fiscale la partita iva
+5) L'utente inserisce i dati
+6) Il sistema aggiorna il data base con l'elenco dei utenti(ci sara' un db per i privati ed una per le aziende).
+7) Il sistema conferma la registrazione (Il sistema invia mail ad utente per verifica)
+8) L'utente dalla sua mail clicca sul link fornito
+9) Il sistema conferma la registrazione dell'utente ed associa un codice cliente.
+	

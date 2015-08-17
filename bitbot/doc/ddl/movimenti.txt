@@ -1,0 +1,17 @@
+CREATE TABLE  "MOVIMENTI" 
+   (	"CODICEPRODOTTO" NUMBER(10,0) NOT NULL ENABLE, 
+	"QTA" NUMBER(10,0), 
+	 CONSTRAINT "MOVIMENTI_PK" PRIMARY KEY ("CODICEPRODOTTO") ENABLE
+   ) ;
+
+CREATE OR REPLACE TRIGGER  "BI_MOVIMENTI" 
+  before insert on "MOVIMENTI"               
+  for each row  
+begin   
+  if :NEW."CODICEPRODOTTO" is null then 
+    select "MAGAZZINO_SEQ".nextval into :NEW."CODICEPRODOTTO" from dual; 
+  end if; 
+end; 
+
+/
+ALTER TRIGGER  "BI_MOVIMENTI" ENABLE;
