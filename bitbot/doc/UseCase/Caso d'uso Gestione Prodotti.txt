@@ -1,0 +1,20 @@
+Caso d'uso : Gestione Prodotti
+
+L'oggetto prodotto ha i seguenti campi :
+Codice prodotto
+Codice categoria
+Acquistabile(da definire nei due casi dei privati e delle aziende)
+Nome prodotto
+Disponibilità
+Data prevista di arrivo del prodotto
+Foto del prodotto
+Descrizione del prodotto
+Sconto
+
+L'utente (in questo caso l'amministratore) :
+1) esegue il login
+2) Accede all'interfaccia con il db
+3) Accede al pannello : Menù con due campi di ricerca : 
+	a) Ricerca tramite il codice prodotto 
+	b) Ricerca tramite il codice della categoria
+	Un pulsante Tutti che visualizza tutti i prodotti

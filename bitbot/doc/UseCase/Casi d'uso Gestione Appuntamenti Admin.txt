@@ -1,0 +1,82 @@
+Gestione Appuntamenti Admin
+
+Scenario base:Crea appuntamento 
+
+*1. Sistema: 		visualizzo l'elenco degli appuntamenti
+ 2. Sistema: 		richiedo all'amministratore di selezionare la data dell'appuntamento
+ 3. Amministratore: inserisco la data dell'appuntamento
+*4. Sistema: 		verifico che la data è corretta e disponibile
+ 5. Sistema:		visualizzo l'elenco di tutti i clienti nell'elenco piu la possibilità di aggiungerne uno nuovo
+*6. Amministratore: inserisco l'id di un cliente presente nell'elenco	
+*7. Sistema:		verifico che l'id sia effettivamente nell'elenco di clienti
+ 8. Sistema:		richiedo all'amministratore di inserire una breve descrizione dell'appuntamento
+ 9. amministratore:	inserisco un riassunto sommario come descrizione dell'appuntamento
+ 10. Sistema:		visualizzo i dati dell'appuntamento appena inseriti e chiedo la conferma dei dati 
+ 11. Amministratore	confermo i dati
+*12. Sistema:		controllo che l'amministratore abbia confermato i dati e creo un nuovo appuntamento		
+ 13. Sistema:		invia al cliente corrispondente una mail per la conferma dell'appuntamento
+	
+1.1 Sistema: non ci sono appuntamenti lo scenario prosegue dal punto 2
+
+4.1 Sistema: la data non è corretta ritorno al punto 2
+4.2 Sistema: il sistema riscontra che la data è già occupata ritorno al punto 2
+
+
+6.1.1 amministratore: 	scelgo di creare un nuovo cliente
+6.1.2 sistema:  	 	vado allo scenario aggiungi cliente del caso d'uso di Gestione Clienti
+*6.1.3 sistema:			controllo che il cliente sia stato aggiunto e ritorno allo scenario base al punto 8
+
+6.1.3.1  Sistema: il cliente inserito è già registrato e torno al punto 5 dello scenario base
+
+7.1 Sistema: verifico che l'amministratore non ha inserito un id corretto e ritorno al punto 5
+
+12.1.1 Sistema: verifico che l'amministratore non abbia confermato i dati e ritorno al punto 1
+
+Scenario base: Elimina appuntamento
+*1. Sistema: Visualizzo tutti gli appuntamenti relativi ad uno specifico admin
+*2. Sistema: Visualizzo tutti gli appuntamenti globali
+ 3. amministratore: seleziona l'indice dell'appuntamento da eliminare
+*4. Sistema: verifica che l'indice è presente nell'elenco degli appuntamenti
+5. Sistema: visualizza i dati dell'appuntamento e chiede la conferma all'amministratore
+*6. amministratore: inserisce la conferma all'eliminazione
+7. Sistema: elimina dalla lista di appuntamenti l'appuntamento scelto
+
+
+1.1 Sistema:  non ci sono appuntamenti lo scenario prosegue dal punto 2
+
+2.1 Sistema: non ci sono appuntamenti globali esco dallo scenario base
+
+4.1 Sistema: verifica che l'indice non è presente nell'elenco e ritorna al punto 1
+
+6.1.1 amministratore: non conferma l'eliminazione
+6.1.2 Sistema: chiede all'amministratore se vuole eliminare un altro appuntamento
+*6.1.3 amministratore: conferma la volontà di eliminare un altro appuntamento
+6.1.4 Sistema: ritorna al punto 1
+
+6.1.3.1 Amministratore: decide di non voler eliminare niente
+6.1.3.2 Sistema: conferma la scelta ed esce dallo scenario base
+
+
+Scenario base: Modifica appuntamento
+*1. Sistema: Visualizzo tutti gli appuntamenti relativi ad uno specifico admin
+*2. Sistema: Visualizzo tutti gli appuntamenti globali
+ 3. amministratore: seleziona l'indice dell'appuntamento da eliminare
+*4. Sistema: verifica che l'indice è presente nell'elenco degli appuntamenti
+5. Sistema: visualizza i dati dell'appuntamento
+6. amministratore: seleziona quale dei campi vuole modificare
+*7. Sistema: controlla che ha selezionato un campo valido
+8. Sistema: visualizza il valore del campo selezionato
+9. amministratore: inserisce un nuovo valore per il campo scelto
+10. Sistema: controlla che il valore del campo è valido
+11. Sistema: crea un nuovo appuntamento con il valore
+12. Sistema: elimina il vecchio appuntamento dalla lista
+13. Sistema: aggiunge il nuovo appuntamento alla lista
+14. Sistema: ordina la lista di appuntamenti
+15. Sistema: conferma all'amministratore l'avvenuta modifica e visualizza la lista di appuntamenti
+1.1 Sistema:  non ci sono appuntamenti lo scenario prosegue dal punto 2
+
+2.1 Sistema: non ci sono appuntamenti globali esco dallo scenario base
+
+4.1 Sistema: verifica che l'indice non è presente nell'elenco e ritorna al punto 1
+
+7.1 Sistema: controlla che l'amministratore non ha selezionato un campo valido, torna al punto 5

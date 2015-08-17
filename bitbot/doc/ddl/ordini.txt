@@ -1,0 +1,20 @@
+CREATE TABLE  "ORDINI" 
+   (	"IDORDINE" NUMBER(5,0), 
+	"DATAARRIVO" DATE NOT NULL ENABLE, 
+	"STATO" VARCHAR2(15) NOT NULL ENABLE, 
+	"CODCLIENTE" NUMBER(5,0) NOT NULL ENABLE, 
+	"DATAORDINE" TIMESTAMP (4) NOT NULL ENABLE, 
+	 CONSTRAINT "ORDINI_PK" PRIMARY KEY ("IDORDINE") ENABLE
+   ) ;
+
+CREATE OR REPLACE TRIGGER  "BI_ORDINI" 
+  before insert on "ORDINI"               
+  for each row  
+begin   
+  if :NEW."IDORDINE" is null then 
+    select "ORDINI_SEQ".nextval into :NEW."IDORDINE" from dual; 
+  end if; 
+end; 
+
+/
+ALTER TRIGGER  "BI_ORDINI" ENABLE;

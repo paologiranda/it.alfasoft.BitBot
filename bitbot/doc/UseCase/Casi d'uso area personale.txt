@@ -1,0 +1,56 @@
+
+Area personale
+
+Scenario base: visualizza dati account
+ 1. Sistema: visualizzo i dati personali del cliente
+ 2. Sistema: richiedo quali dati vuole modificare 
+ 3. Utente: scelgo il campo da modificare
+ 4. Sistema: controllo se il campo esiste
+*5. Utente: modifico il campo selezionato 
+ 6: Sistema: controllo se nel campo è stato inserito un valore valido
+*7: Sistema: aggiorno il cliente con il campo modificato 
+
+5.1: Sistema: il campo non esiste ritorno al punto 2
+7.1: Sistema: il dato non è valido torno al punto 5
+
+Scenario base: gestione ordini/storico ordini
+ 1. Sistema: chiedo all'utente quale tipo di ordini vuole visualizzare (consegnato, in arrivo, in partenza,tutti)
+ 2. Utente: seleziono il tipo di ordine da vedere
+ 3. Sistema: controllo se il tipo di ordine è corretto
+*4. Sistema: visualizzo gli ordini di quel tipo 
+
+4.1 Sistema: il tipo di ordine non è corretto ritorno al punto 2
+4.2 Sistema: non ci sono ordini effettuati esce dal caso d'uso
+
+
+Scenario base: gestione ordini/stato degli ordini in corso
+*1. Sistema: visualizzo gli ordini diversi dal tipo (consegnato) 
+ 2. Sistema: visualizzo il tracker del pacco e la data di consegna prevista per ogni ordine 
+ 3. Sistema: visualizzo la possibilità di contattare il venditore
+*4. Utente: scelgo di contattare il venditore 
+*5. Sistema: controllo se la possibilità è corretta
+ 6. Sistema: visualizzo un form per poter inviare una mail al venditore 
+ 7. Utente: scrivo la mail per il venditore
+*8. Sistema: invio la mail
+
+1.1 Sistema: non ci sono ordini in corso esce dal caso d'uso
+4.1 Utente: scelgo di non contattare il venditore ed esco dal caso d'uso
+5.1 Sistema: la possibilità è errata torno al punto 3
+8.1 Sistema: non riesco ad inviare la mail torno al punto 6 
+
+Scenario base: gestione appuntamenti
+*1. Sistema: visualizzo i messaggi diretti dall'admin all'utente 
+ 2. Sistema: evidenzio il messaggio più recente
+ 3. Sistema: visualizzo la data dell'appuntamento confermato 
+ 4. Sistema: visualizzo la possibilità di contattare il venditore
+*5. Utente: scelgo di contattare il venditore 
+*6. Sistema: controllo se la possibilità è corretta
+ 7. Sistema: visualizzo un form per poter inviare una mail al venditore 
+ 8. Utente: scrivo la mail per il venditore
+*9. Sistema: invio la mail
+
+
+1.1 Sistema: visualizzo il messaggio "non ci sono messaggi in elenco"
+5.1 Utente: scelgo di non contattare il venditore ed esco dal caso d'uso
+6.1 Sistema: la possibilità è errata torno al punto 4
+9.1 Sistema: non riesco ad inviare la mail torno al punto 7
