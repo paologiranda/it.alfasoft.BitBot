@@ -1,12 +1,18 @@
 <div ng-controller="MainCtrl">
 	<hr>
-	<slide-show ></slide-show>
-	
+	<slide-show></slide-show>
+
 	<div style="margin-bottom: 50px;"></div>
+	<div class="col-md-3">
+		<div class="search">
+			<input type="search" class="form-control" ng-model="searchItem"
+				placeholder="Search for...">
+		</div>
+	</div>
 	<div class="row">
 		<div class="col-lg-7">
 			<div ng-repeat="x in prodotti | filter:searchItem |limitTo:4 ">
-  				<div class="col-lg-6" align="center">
+				<div class="col-lg-6" align="center">
 					<h4>
 						<p>
 							<strong>{{ x.nome }}</strong>
