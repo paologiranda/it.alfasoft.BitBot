@@ -22,7 +22,7 @@ angular.module('bitBotApp')
     		 }else{
 //				   $localStorage.token = res.data.token;
     			 if(whereAreYouFrom){
-    				   $window.location.reload();
+    				  $window.location.reload();
     				  $location.path('/carrello');
     			  }else{
     				 $window.location.reload();
