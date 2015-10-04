@@ -15,12 +15,11 @@
 	
 	</div>
 	<div class="col-sm-5">
-		<h5>
-			Quantita
-			<hr>
-			<input type="number" ng-model="qta">
-		</h5>
-		<h2>
+		<h5>Quantita</h5><hr>
+			<select ng-model="qta">
+			<option ng-repeat="quant in quantita">{{quant}}</option>
+			</select>
+		 <h2>
 			<a class="btn btn active" role="button"
 				ng-click="add('{{selectProd.nome}}')">Aggiungi al carrello</a> <a
 				class="btn btn active" role="button" ng-href="#/">Torna al

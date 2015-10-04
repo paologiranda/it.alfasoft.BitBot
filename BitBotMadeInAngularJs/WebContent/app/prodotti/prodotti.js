@@ -59,6 +59,7 @@ angular.module('bitBotApp')
                                  function ($scope,dataSc,addProd,$http,addToShop,$location) {
      	
       $scope.selectProd = dataSc.getSelectedProd();
+      $scope.quantita=[1,2,3,4,5,6,7,8,9,10];
       
         $scope.add = function(elemento){
         	if($scope.qta==null){
