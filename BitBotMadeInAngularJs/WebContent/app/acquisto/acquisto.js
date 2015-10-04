@@ -39,8 +39,8 @@ angular.module('bitBotApp')
 		.success(function(data) {
 			$scope.loggato = data;
 			if ($scope.loggato == null) {
-				var whereAreYouFrom = self.location.href;
-				$rootScope.whereAreYouFrom = whereAreYouFrom;// recupera l'url della pagina
+				var whereAreYouFrom = self.location.href;// recupera l'url della pagina
+				$rootScope.whereAreYouFrom = whereAreYouFrom;
 				$rootScope.userNonLoggato="Effettua il login prima di procedere con l'acquisto";// variabile che uso se non è loggato e lo reindizzo al login
 				$location.path('/login');
 			}else{
