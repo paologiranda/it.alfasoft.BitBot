@@ -5,7 +5,7 @@ angular.module('bitBotApp')
 .controller('LoginCtrl',['$scope','$http','$location','$window','API_CONF','$rootScope','loginFactory','$localStorage','erroriProvenientiDalServer',
 		function ($scope,$http,$location,$window,apiConf,$rootScope,loginFactory,$localStorage,erroriProvenientiDalServer) {
     
-	$scope.whereAreYouFrom = $rootScope.whereAreYouFrom;
+	var whereAreYouFrom = $rootScope.whereAreYouFrom;
     $scope.errorFromServer = false;
     $scope.submitForm = function(){  
     	 var FormData = {
@@ -21,10 +21,10 @@ angular.module('bitBotApp')
     		 		});
     		 }else{
 //				   $localStorage.token = res.data.token;
-    			 if($scope.whereAreYouFrom){
-    				  $window.history.go(-1);	
-    				  $window.location.reload();
-    			 }else{
+    			 if(whereAreYouFrom){
+    				   $window.location.reload();
+    				  $location.path('/carrello');
+    			  }else{
     				 $window.location.reload();
     				 $window.location = "/";  
     			 }
