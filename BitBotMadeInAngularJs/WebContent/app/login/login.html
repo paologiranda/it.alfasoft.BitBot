@@ -3,8 +3,10 @@
 		<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="false"></span>{{
 		new_string }}
 	</div>
-		
-
+<!-- Mostro solo se non è loggato -->	
+<div class="row">
+<span class="alert alert-danger" align="center" ng-if="checkLogin">{{userNonLoggato}}</span>
+</div>	
 	<h4>Accedi alla tua area riservata</h4>
 	<div class="row">
 		<div class="col-sm-6">
@@ -28,8 +30,10 @@
 						</label>
 					</div>
 					<p>
+					<span>
 						<button class="btn btn active" type="submit"
 							class="btn btn active">Sign in</button>
+					</span>
 					</p>
 				</fieldset>
 			</form>

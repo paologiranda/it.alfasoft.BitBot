@@ -26,7 +26,7 @@ angular.module('bitBotApp')
 
          function getUserFromToken() {
              var token = $localStorage.token;
-             console.log(token);
+//             console.log(token);
 
              var user = {};
              if (typeof token !== 'undefined') {

@@ -1,12 +1,12 @@
 'use strict';
 
 angular.module('bitBotApp')
-.controller('CarrelloCtrl',['$scope', 'addProd', '$http', '$location','$window','API_CONF', 
-                            function($scope, addProd, $http, $location,$window,apiConf) {
+.controller('CarrelloCtrl',['$scope', 'addProd', '$http', '$location','$window','API_CONF','$rootScope','$routeParams', 
+                            function($scope, addProd, $http, $location,$window,apiConf,$rootScope,$routeParams) {
 
 	$scope.elemAggiunto = addProd.getElemSelect();
 	$scope.UserNotLoggato = false;
-	var carrelloCallService =  apiConf.server + apiConf.base_url + '/ordini/visualizzaCarrello?codCliente=9';
+	var carrelloCallService =  apiConf.server + apiConf.base_url + '/ordini/visualizzaCarrello?codCliente=24';
 	$http.get(carrelloCallService)
 	.success(function(data){
 			$scope.carrello = data;
@@ -39,13 +39,17 @@ angular.module('bitBotApp')
 		.success(function(data) {
 			$scope.loggato = data;
 			if ($scope.loggato == null) {
-				$scope.UserNotLoggato = true;
+				var whereAreYouFrom = self.location.href;
+				$rootScope.whereAreYouFrom = whereAreYouFrom;// recupera l'url della pagina
+				$rootScope.userNonLoggato="Effettua il login prima di procedere con l'acquisto";// variabile che uso se non è loggato e lo reindizzo al login
+				$location.path('/login');
+			}else{
+				$location.path('/sceltaPagamento');
 			}
-			else
-			$location.path('/sceltaPagamento')					
 		})
 	}
-}])
+}]);
+ angular.module('bitBotApp')
  .controller('SceltapagamentoCtrl', function ($scope,$http) {
 
 	  var callService = 'http://localhost:8081/rest/ordini/confermaOrdine';	

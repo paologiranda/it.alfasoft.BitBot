@@ -1,80 +1,79 @@
 'use strict';
 
 angular.module('bitBotApp')
-   	.controller('CategoriaCtrl',['$scope','$http','categoriaService','API_CONF',
-   	           function ($scope,$http,categoriaService,apiConf) {
+   	.controller('CategoriaCtrl',['$scope','$http','categoriaService','API_CONF','addToShop','showCategory','showSubCategory',
+   	           function ($scope,$http,categoriaService,apiConf,addToShop,showCategory,showSubCategory) {
    		
-   		var callCateg =  apiConf.server + apiConf.base_url + '/prodotti/categoria';
-   		$http.get(callCateg)
-		.success(function(data){
+   		
+   		showCategory.query(function(data){// chiamata a servizio che ritorna l enum delle categorie presente nel database
    			$scope.categorie = data;
-   		});
-		$scope.mostraSottoCat = function(categ){
- 				categoriaService.setSelectedProd(categ);
-		}		
+   		})
+		$scope.mostraSottoCat = function(categ){// setto la scelta dell utente su quale categoria lui clicca
+ 			var categorie = {};
+ 			categorie= categ;
+   			categoriaService.setSelectedProd(categorie);
+ 				showSubCategory.send(categorie,function(res){
+ 					console.log('Ciao');
+ 				})
+   		}
+   		
+   		
   }])
-   .controller('SottocategoriaCtrl',['$scope','$http','categoriaService', 'subCatService','API_CONF',
-		  function ($scope,$http,categoriaService, subCatService,apiConf) {
-   
+   .controller('SottocategoriaCtrl',['$scope','$http','categoriaService', 'subCatService','API_CONF','showSubCategory',
+		  function ($scope,$http,categoriaService,subCatService,apiConf,showSubCategory) {
+	   var sottocategoria = {};
+  	   sottocategoria = categoriaService.getSelectedProd();// recupero la scelta fatta dall utente
+	   $scope.showEmpty = false;
 	  
-  	$scope.sottocategoria = categoriaService.getSelectedProd();
-  	$scope.showEmpty = false;
-  	if($scope.sottocategoria == false){
-  		$scope.showEmpty = true;
-  	}
-  	
-		
-		if($scope.sottocategoria.categoria  == "Informatica"){
+	    if(sottocategoria == false){
+	  		$scope.showEmpty = true;
+	  	}
+	  	else{
+//	  		showSubCategory.query(function(data){
+//	  			 $scope.items = data;
+//	  		})
+//	  	}
+	  		
+		if(sottocategoria.categoria  == "Informatica"){
 			var callCateg = apiConf.server + apiConf.base_url + '/prodotti/sottocategory?categoria=Informatica';
 	   		$http.get(callCateg)
 			.success(function(data){
 				$scope.items = data;
 	   		});
 	  	}
-	    else if($scope.sottocategoria.categoria == "Elettronica"){
+	    else if(sottocategoria.categoria == "Elettronica"){
 	    	var callCategElet = apiConf.server + apiConf.base_url + '/prodotti/sottocategory?categoria=Elettronica';
 	   		$http.get(callCategElet)
 			.success(function(data){
 	   			$scope.items = data;
 	   		});
 	  	}
+	  	}
 		
-		
-		
-		var callCatInfo =apiConf.server + apiConf.base_url + '/prodotti/sottocategory?categoria=Informatica';
-		$http.get(callCatInfo)
-		.success(function(data){
-			$scope.informatica = data;
-		})
-		var callCatElet = apiConf.server + apiConf.base_url + '/prodotti/sottocategory?categoria=Elettronica';
-		$http.get(callCatElet)
-		.success(function(data){
-			$scope.elettronica = data;
-		})
-		
-		
-		
-		
-		$scope.selected = function(prod){
+		 $scope.selected = function(prod){// setto la sottocategoria scelta dall utente 
 			subCatService.setSelectedProd(prod);
 				//console.log(categ);				
 		}
    }])
-    .controller('DescrizioneCtrl',['$scope','dataSc','addProd','$http','addToShop',
-                                 function ($scope,dataSc,addProd,$http,addToShop) {
+    .controller('DescrizioneCtrl',['$scope','dataSc','addProd','$http','addToShop','$location',
+                                 function ($scope,dataSc,addProd,$http,addToShop,$location) {
      	
       $scope.selectProd = dataSc.getSelectedProd();
- 
+      
         $scope.add = function(elemento){
-            addProd.setElemSelect(elemento);
-            var itemSelected = {
-            	codProd: $scope.selectProd.codice,
-            	qta: 1,
+        	if($scope.qta==null){
+            	alert("Inserire la quantità che ti interessa");
+            }else{
+	            addProd.setElemSelect(elemento);
+	            var itemSelected = {
+	            	codProd: $scope.selectProd.codice,
+	            	qta: $scope.qta,           	
+	            }
+	            addToShop.buy(itemSelected,
+	            		function(res){
+	            		
+	            })
             }
-            addToShop.buy(itemSelected,
-            		function(res){
-            })
-
        } 
   }])
 .controller('descrizione1Ctrl',['$scope','addToCarr','$http','addToShop',
