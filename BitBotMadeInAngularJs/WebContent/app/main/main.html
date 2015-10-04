@@ -8,9 +8,18 @@
 			<input type="search" class="form-control" ng-model="searchItem"
 				placeholder="Search for...">
 		</div>
+		<!-- news -->
+			<div class="news">
+				<div class="news-text">
+					<h3>LATEST NEWS</h3>
+					<p>Repellat earum rerum hic tenetur a sapiente delectus, ut aut
+						reiciendis voluptatibus maiores alias consequatur aut perferendis
+						doloribus asperiores repellat.</p>
+				</div>
+			</div>
 	</div>
 	<div class="row">
-		<div class="col-lg-7">
+		<div class="col-lg-6">
 			<div ng-repeat="x in prodotti | filter:searchItem |limitTo:4 ">
 				<div class="col-lg-6" align="center">
 					<h4>
@@ -22,17 +31,6 @@
 					<div class="caption">Euro {{ x.prezzo }}</div>
 					<a class="btn btn active" role="button" ng-href="#/descrizione"
 						ng-click="selected(x)" style="margin-bottom: 10px">Entra</a>
-				</div>
-			</div>
-		</div>
-		<div class="col-lg-5">
-			<!-- news -->
-			<div class="news">
-				<div class="news-text">
-					<h3>LATEST NEWS</h3>
-					<p>Repellat earum rerum hic tenetur a sapiente delectus, ut aut
-						reiciendis voluptatibus maiores alias consequatur aut perferendis
-						doloribus asperiores repellat.</p>
 				</div>
 			</div>
 		</div>
