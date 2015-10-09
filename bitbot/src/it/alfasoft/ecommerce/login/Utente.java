@@ -4,11 +4,26 @@ public class Utente {
 	private String codUtente;
 	private Profilo profilo;
 	private String mail;
+	private String token;
 
 	public Utente(String cod, Profilo p, String m) {
 		setCodUtente(cod);
 		setProfilo(p);
 		setMail(m);
+	}
+
+	public Utente(String cod, Profilo p, String m,String t) {
+		setCodUtente(cod);
+		setProfilo(p);
+		setMail(m);
+		setToken(t);
+	}
+
+	public void setToken(String t) {
+		this.token = t;
+	}
+	public String getToken(){
+		return this.token;
 	}
 
 	public String getCodUtente() {

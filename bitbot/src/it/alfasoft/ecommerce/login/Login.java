@@ -15,9 +15,11 @@ public class Login implements ILogin {
 			db = new DaoLogin();
 			try {
 				ut = db.searchCliente(mail, pwd);
+				ut.setToken(Generatoretoken.generatoken("U"));
 			} catch (LoginErrato e) {
 				try {
 					ut = db.searchAdmin(mail, pwd);
+					ut.setToken(Generatoretoken.generatoken("A"));
 				} catch (LoginErrato e1) {
 					throw new LoginErrato();
 				}
