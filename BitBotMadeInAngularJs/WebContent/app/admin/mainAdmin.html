@@ -1,2 +1,3 @@
-<legend>Welcome {{ admin.mail }}</legend>
+<span ng-if="isUser || isNull">Qui non puoi accedere giovane</span>
+<span ng-if="isAdmin"><legend>Welcome {{ admin.mail }}</legend></span>
 

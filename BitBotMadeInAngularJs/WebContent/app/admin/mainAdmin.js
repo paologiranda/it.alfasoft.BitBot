@@ -1,15 +1,42 @@
 'use strict';
 
 angular.module('bitBotApp')
-  .controller('mainAdminCtrl',['$scope','$http','API_CONF',
-                function ($scope,$http,apiConf) {
+  .controller('mainAdminCtrl',['$scope','$http','API_CONF','$rootScope',
+                function ($scope,$http,apiConf,$rootScope) {
 	  
+	    
+	  var token = $rootScope.token;
+	  $scope.isUser=false;
+	  if(token){
+		  if(token[0]=="U"){
+				 $scope.isUser=true; 
+		  }
+	  }
+	  
+	   // se c'è il token dell user
+	  $scope.isNull = false;// se data==null
+	  $scope.isAdmin=false;// se c'e il token dell admin
 	  var url =  apiConf.server + apiConf.base_url + '/login/loggato';
 	    $http.get(url)
 	    .success(function(data){
-	    	console.log(data);
+	    	if(!data){
+	    		$scope.isNull=true;
+	    	}
+	    	if(data){
+	    		 if(data.token){
+	    			 if(data.token[0]=="A"){
+	    				 $scope.isAdmin=true;
+	    			 }
+	    		 }	
+	    	}
+	    	
 	    	$scope.admin = data;
-	    })   
+	    })  
+	    
+	   
+	    
+	    
+	    
   }])
   
  .controller('inserisciProdCtrl',['$scope','$http','$window','API_CONF',

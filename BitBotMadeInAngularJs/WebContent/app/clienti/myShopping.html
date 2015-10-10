@@ -1,4 +1,8 @@
 <div class="row">
+<span ng-if="NoToken">Non puoi vedere questa pagina</span>
+</div>
+<div class="row" ng-if="SiToken">
+
 	<div class="col-md-12">
 		<div class="container-fluid">
 			<h3>My shopping:</h3>
@@ -18,7 +22,7 @@
 						<td>{{}}name</td>
 						<td>{{myProduct.dataOrdine.dayOfMonth}}/{{myProduct.dataOrdine.month}}/{{myProduct.dataOrdine.year}}</td>
 						<td>{{myProduct.dataArrivo.dayOfMonth}}/{{myProduct.dataArrivo.month}}/{{myProduct.dataArrivo.year}}</td>
- 						<td>{{myProduct.stato}}</td>
+						<td>{{myProduct.stato}}</td>
 					</tr>
 				</tbody>
 			</table>

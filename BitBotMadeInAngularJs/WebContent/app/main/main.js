@@ -2,18 +2,29 @@
 
 angular.module('bitBotApp')
  .controller('MainCtrl',['$scope','dataSc','$http','$location','$window','callItem',
-                         'API_CONF','callLoggato','loginCommon',
-    function($scope,dataSc,$http,$location,$window,callItem,apiConf,callLoggato,loginCommon) {
+                         'API_CONF','callLoggato','loginCommon','$rootScope',
+    function($scope,dataSc,$http,$location,$window,callItem,apiConf,callLoggato,loginCommon,$rootScope) {
 	 
 	 callItem.query(function(data){// chiamata tutti prodotti presenti nel
 		   $scope.prodotti = data;
 	 });
 	 
-	 
-	 	var x = apiConf.server + apiConf.base_url + '/login/loggato';
-	 	$http.get(x)
+	 	var url = apiConf.server + apiConf.base_url + '/login/loggato';
+	 	$http.get(url)
  		.success(function(data){
+ 			if(data){
+ 				$rootScope.token = data.token;
+ 				var token = $rootScope.token;
+ 				if(token[0]=="U"){
+ 					$rootScope.isUser = token;
+// 					console.log($rootScope.isUser);
+ 				}else if (token[0]=="A"){
+ 					$rootScope.isAdmin = token;
+// 					console.log("Ciao admin");
+ 				}
+ 			}
 	    	$scope.userData = data;
+	    	
 	    	$scope.isUser = false;
 	    	$scope.isAdmin = false;
 	    	$scope.loggato = false;

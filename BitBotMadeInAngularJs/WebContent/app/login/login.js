@@ -25,8 +25,10 @@ angular.module('bitBotApp')
     				  $window.location.reload();
     				  $location.path('/carrello');
     			  }else{
-    				 $window.location.reload();
-    				 $window.location = "/";  
+    				  $rootScope.token = res.token;
+    				  
+    				  $window.location.reload();
+    				  $window.location = "/";  
     			 }
 			  } 		 
     		})
