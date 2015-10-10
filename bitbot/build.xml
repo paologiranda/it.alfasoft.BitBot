@@ -21,7 +21,8 @@
 				<include name="*.xml"/>
 			</fileset>
 		</copy>
-		<sql onerror="continue" driver="oracle.jdbc.OracleDriver" url="jdbc:oracle:thin:@//localhost:1521/XE"
+		<!--per scrivere nel db le tabelle-->
+		<!--<sql onerror="continue" driver="oracle.jdbc.OracleDriver" url="jdbc:oracle:thin:@//localhost:1521/XE"
 			userid="corso" password="corso">
 			<path>
 				<fileset dir=".">
@@ -31,7 +32,7 @@
 			<classpath>
 				<pathelement location="lib/ojdbc6.jar" />
 			</classpath>
-		</sql>
+		</sql>-->
 		<delete dir="report"></delete>
 		<mkdir dir="report" />
 	</target>
@@ -40,7 +41,8 @@
 		<javac srcdir="${src}" destdir="${build}" classpathref="bitBot-classpath" />
 	</target>
 
-	<target name="test" depends="compile" description="test">
+	<!--per fare i test-->
+<!--	<target name="test" depends="compile" description="test">
 		<junit printsummary="yes">
 			<classpath>
 				<pathelement location="${build}" />
@@ -55,9 +57,10 @@
 				</fileset>
 			</batchtest>
 		</junit>
-	</target>
+	</target>-->
 
-	<target name="dist" depends="test" description="generate the distribution">
+	<!--<target name="dist" depends="test" description="generate the distribution">-->
+	<target name="dist" depends="compile" description="generate the distribution">
 		<mkdir dir="${dist}/lib" />
 		<jar jarfile="${dist}/lib/bitBot.jar" basedir="${build}" />
 	</target>
