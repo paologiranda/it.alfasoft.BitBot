@@ -1,3 +1,6 @@
-<span ng-if="isUser || isNull">Qui non puoi accedere giovane</span>
+<span ng-if="isUser || isNull">
+<div class="alert alert-danger" role="alert">Qui non puoi accedere giovane</div>
+</span>
 <span ng-if="isAdmin"><legend>Welcome {{ admin.mail }}</legend></span>
+
 
