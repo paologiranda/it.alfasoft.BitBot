@@ -59,6 +59,7 @@ public class Login {
 	@GET
 	@Produces("application/json")
 	public String loggato(){
+		
 		Utente utente = (Utente) request.getSession().getAttribute("utente");
 		Gson gson = new Gson();
 		String result = gson.toJson(utente);
