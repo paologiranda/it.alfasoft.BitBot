@@ -15,6 +15,7 @@ angular.module('bitBotApp')
 	   $scope.SiToken=true;
 	   var tokenUser = $rootScope.isUser;// token per l'user proveniente dal mail principale// token per l'admin proveniente dal mail principale
 	   var tokenAdmin = $rootScope.tokenAdmin;// token per l'admin proveniente dal main Admin
+	  var token = $rootScope.token;
 	   if(token=="undefined"){
 			  $scope.NoToken=true;
 			  $scope.SiToken=false;	 
