@@ -1,9 +1,11 @@
 package it.alfasoft.ecommerce.clienti.dao;
 
+import it.alfasoft.ecommerce.clienti.bo.Cliente;
 import it.alfasoft.ecommerce.clienti.bo.ClienteNome;
 import it.alfasoft.ecommerce.clienti.bo.GeneraMailConferma;
 import it.alfasoft.ecommerce.clienti.bo.GeneraToken;
 import it.alfasoft.ecommerce.clienti.exception.ClienteInesistente;
+import it.alfasoft.ecommerce.login.ClienteNonattivo;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -14,19 +16,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DaoClienti extends ADaoClienti implements IDaoGestioneClienti {
-	
+
 	String passworddb = "corso";
 	String userdb = "corso";
-	
+
 	public DaoClienti(String url) throws ClassNotFoundException {
 		super(url);
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	@Override
 	public int aggiungiCliente(AziendaDaoDto a) throws SQLException {
-//		String password = "corso";
-//		String user = "corso";
+		// String password = "corso";
+		// String user = "corso";
 		String sqlString = "insert into clienti (codconferma,telefono,password,mail,via,cap,scala,piano,citta,provincia,paese,attivo) values(";
 		sqlString += "'" + a.getCodiceConferma() + "',";
 		sqlString += "'" + a.getTelefono() + "',";
@@ -45,7 +47,7 @@ public class DaoClienti extends ADaoClienti implements IDaoGestioneClienti {
 			i = eseguiAggiornamentoClienti(sqlString, userdb, passworddb);
 		} catch (ClassNotFoundException e) {
 			throw new SQLException("driver non trovato!!!");
-		} 
+		}
 		if (i == 1) {
 			sqlString = "SELECT CODCLIENTE FROM CLIENTI WHERE MAIL='"
 					+ a.getMail() + "'";
@@ -72,18 +74,17 @@ public class DaoClienti extends ADaoClienti implements IDaoGestioneClienti {
 				return i;
 			} catch (ClassNotFoundException e) {
 				throw new SQLException("driver non trovato!!!");
-			} 
+			}
 
 		}
 		return 0;
 
 	}
-	
+
 	@Override
-	public int aggiungiCliente(PrivatoDaoDto p) throws 
-			SQLException{
-//		String password = "corso";
-//		String user = "corso";
+	public int aggiungiCliente(PrivatoDaoDto p) throws SQLException {
+		// String password = "corso";
+		// String user = "corso";
 
 		String sqlString = "insert into clienti (codconferma,telefono,password,mail,via,cap,scala,piano,citta,provincia,paese,attivo) values(";
 		sqlString += "'" + p.getCodiceConferma() + "',";
@@ -103,9 +104,8 @@ public class DaoClienti extends ADaoClienti implements IDaoGestioneClienti {
 			i = eseguiAggiornamentoClienti(sqlString, userdb, passworddb);
 		} catch (ClassNotFoundException e) {
 			throw new SQLException("driver non trovato!!!");
-		} 
+		}
 
-		
 		if (i == 1) {
 			sqlString = "SELECT CODCLIENTE FROM CLIENTI WHERE MAIL='"
 					+ p.getMail() + "'";
@@ -131,7 +131,7 @@ public class DaoClienti extends ADaoClienti implements IDaoGestioneClienti {
 				return i;
 			} catch (ClassNotFoundException e) {
 				throw new SQLException("driver non trovato!!!");
-			
+
 			}
 
 		}
@@ -157,7 +157,8 @@ public class DaoClienti extends ADaoClienti implements IDaoGestioneClienti {
 	@Override
 	public String ritornacodiceConferma(String mail) throws SQLException,
 			ClienteInesistente {
-		Connection connessione = DriverManager.getConnection(url, userdb, passworddb);
+		Connection connessione = DriverManager.getConnection(url, userdb,
+				passworddb);
 		Statement statement = connessione.createStatement();
 		String query = "select codconferma from clienti where mail='" + mail
 				+ "'";
@@ -173,7 +174,8 @@ public class DaoClienti extends ADaoClienti implements IDaoGestioneClienti {
 
 	@Override
 	public int attivaCliente(int codiceCliente) throws SQLException {
-		Connection connessione = DriverManager.getConnection(url, userdb, passworddb);
+		Connection connessione = DriverManager.getConnection(url, userdb,
+				passworddb);
 		Statement statement = connessione.createStatement();
 		String query = "select attivo from clienti where codcliente="
 				+ codiceCliente;
@@ -192,7 +194,7 @@ public class DaoClienti extends ADaoClienti implements IDaoGestioneClienti {
 			} catch (ClassNotFoundException e) {
 
 				e.printStackTrace();
-			} 
+			}
 		}
 
 		return 0;
@@ -314,7 +316,7 @@ public class DaoClienti extends ADaoClienti implements IDaoGestioneClienti {
 		ResultSet rs = st.executeQuery(sql);
 		if (rs.next()) {
 			int codcliente = rs.getInt("codcliente");
-		return codcliente;
+			return codcliente;
 		}
 		return 0;
 
@@ -421,7 +423,7 @@ public class DaoClienti extends ADaoClienti implements IDaoGestioneClienti {
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} 
+		}
 
 		sql = "UPDATE AZIENDE SET piva = " + a.getPartitaIva()
 				+ " , ragionesociale='" + a.getRagioneSociale() + "'"
@@ -431,7 +433,7 @@ public class DaoClienti extends ADaoClienti implements IDaoGestioneClienti {
 	}
 
 	@Override
-	public int modificaPrivato(PrivatoDaoDto p) throws SQLException{
+	public int modificaPrivato(PrivatoDaoDto p) throws SQLException {
 		String password = "corso";
 		String user = "corso";
 
@@ -455,7 +457,7 @@ public class DaoClienti extends ADaoClienti implements IDaoGestioneClienti {
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		
+
 		}
 
 		sql = "UPDATE PRIVATI SET codicefiscale = '" + p.getCodiceFiscale()
@@ -467,8 +469,8 @@ public class DaoClienti extends ADaoClienti implements IDaoGestioneClienti {
 
 	@Override
 	public int eliminaCliente(String mail) throws SQLException {
-//		String password = "corso";
-//		String user = "corso";
+		// String password = "corso";
+		// String user = "corso";
 
 		Connection conn;
 		Statement st = null;
@@ -485,7 +487,7 @@ public class DaoClienti extends ADaoClienti implements IDaoGestioneClienti {
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} 
+		}
 		return ris;
 
 	}
@@ -497,48 +499,50 @@ public class DaoClienti extends ADaoClienti implements IDaoGestioneClienti {
 		Statement st = null;
 		String sql = null;
 
-			conn = DriverManager.getConnection(url, userdb, passworddb);
-			st = conn.createStatement();
-			sql = "select codCliente from clienti where mail='" + mail + "'";
-			System.out.println(sql);
-			ResultSet rs = st.executeQuery(sql);
-			rs.next();
-			int codCliente = rs.getInt("codcliente");
+		conn = DriverManager.getConnection(url, userdb, passworddb);
+		st = conn.createStatement();
+		sql = "select codCliente from clienti where mail='" + mail + "'";
+		System.out.println(sql);
+		ResultSet rs = st.executeQuery(sql);
+		rs.next();
+		int codCliente = rs.getInt("codcliente");
+		conn.close();
+		rs.close();
+		st.close();
+		conn = DriverManager.getConnection(url, userdb, passworddb);
+		st = conn.createStatement();
+		sql = "select * from AZIENDE where codcliente='" + codCliente + "'";
+		rs = st.executeQuery(sql);
+		if (rs.next()) {
 			conn.close();
 			rs.close();
 			st.close();
-			conn = DriverManager.getConnection(url, userdb, passworddb);
-			st = conn.createStatement();
-			sql = "select * from AZIENDE where codcliente='" + codCliente + "'";
-			rs = st.executeQuery(sql);
-			if (rs.next()) {
-				conn.close();
-				rs.close();
-				st.close();
-				return 0;
-			}
-			sql = "select * from PRIVATI where codcliente='" + codCliente + "'";
-			rs = st.executeQuery(sql);
-			if (rs.next()) {
-				conn.close();
-				rs.close();
-				st.close();
-				return 0;
-			}
+			return 0;
+		}
+		sql = "select * from PRIVATI where codcliente='" + codCliente + "'";
+		rs = st.executeQuery(sql);
+		if (rs.next()) {
 			conn.close();
 			rs.close();
 			st.close();
-			return 1;
+			return 0;
+		}
+		conn.close();
+		rs.close();
+		st.close();
+		return 1;
 
 	}
+
 	@Override
-	public int recuperaPwd(String email) throws SQLException{
-		
-//		String password = "corso";
-//		String user = "corso";
+	public int recuperaPwd(String email) throws SQLException {
+
+		// String password = "corso";
+		// String user = "corso";
 		String nuovaPassword = "estate2015";
-				
-		String sqlString  = "UPDATE CLIENTI SET PASSWORD='"+nuovaPassword+"' WHERE mail ='"+email +"'";
+
+		String sqlString = "UPDATE CLIENTI SET PASSWORD='" + nuovaPassword
+				+ "' WHERE mail ='" + email + "'";
 		int risp = 0;
 		try {
 			risp = eseguiAggiornamentoClienti(sqlString, userdb, passworddb);
@@ -548,25 +552,25 @@ public class DaoClienti extends ADaoClienti implements IDaoGestioneClienti {
 
 		return risp;
 	}
-	
+
 	@Override
-	public ClienteNome nomeCliente(int codcliente) throws SQLException{
-		
+	public ClienteNome nomeCliente(int codcliente) throws SQLException {
+
 		ClienteNome cliente = new ClienteNome();
 		Connection conn;
 		Statement st = null;
-		String sqlString ="select * from("
+		String sqlString = "select * from("
 				+ "select CODCLIENTE, RAGIONESOCIALE AS NOME from AZIENDE "
 				+ " union "
 				+ "select  CODCLIENTE, COGNOME|| ' ' || NOME AS NOME from PRIVATI "
-				+ ") where CODCLIENTE='"+codcliente+"'";
-		
+				+ ") where CODCLIENTE='" + codcliente + "'";
+
 		System.out.println(sqlString);
-		
+
 		conn = DriverManager.getConnection(url, userdb, passworddb);
 		st = conn.createStatement();
-		ResultSet rs = st .executeQuery(sqlString);
-		
+		ResultSet rs = st.executeQuery(sqlString);
+
 		rs.next();
 		cliente.setCodiceCliente(rs.getInt("CODCLIENTE"));
 		cliente.setNome(rs.getString("NOME"));
@@ -577,6 +581,25 @@ public class DaoClienti extends ADaoClienti implements IDaoGestioneClienti {
 
 		return cliente;
 	}
-	
 
+	public ArrayList<String> listaProvince() throws SQLException,
+			ClassNotFoundException{
+		Class.forName("oracle.jdbc.OracleDriver");
+		ArrayList<String> lista = new ArrayList<String>();
+		Connection connessione = DriverManager.getConnection(
+				"jdbc:oracle:thin:@//localhost:1521/XE", "corso", "corso");
+		Statement statement = connessione.createStatement();
+		String sqlQuery = "select * from province";
+		System.out.println(sqlQuery);
+		ResultSet rs = statement.executeQuery(sqlQuery);
+
+		while (rs.next()) {
+			lista.add(rs.getString("nomeprovinca"));
+			System.out.print(lista);
+			// System.out.println(ragioneSociale);
+		}
+
+		connessione.close();
+		return lista;
+	}
 }

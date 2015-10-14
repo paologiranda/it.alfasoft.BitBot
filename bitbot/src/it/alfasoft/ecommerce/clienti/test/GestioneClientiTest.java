@@ -28,9 +28,8 @@ public class GestioneClientiTest extends SpringTest<GestioneClienti> {
 	GestioneClienti gest = getBean("clienti");
 	Random rd = new Random();
 	String piva = "" + rd.nextInt(23000);
-	String emailAzienda=" pippos" + piva
-			+ "@libero.it";
-	String emailPrivato=" pippos" + rd.nextInt(234444) + "@libero.it";
+	String emailAzienda="azienda@gmail.com";
+	String emailPrivato="privato@gmail.com";
 	
 	 
 	@Test
@@ -38,7 +37,7 @@ public class GestioneClientiTest extends SpringTest<GestioneClienti> {
 
 		Assert.assertTrue(gest.aggiungiCliente("pip1po srl", piva,
 				CategoriaCliente.Azienda, "34015212", emailAzienda, "Italia", "Torino", "TO", 3, "B",
-				CategoriaVia.largo, "Stretto", 10146, "69", "suuuuuuuper") == 1);
+				CategoriaVia.largo, "Stretto", 10146, "69", "azienda") == 1);
 		testAttivaCliente(emailAzienda);
 		Assert.assertNotNull(testRitornoCodice(emailAzienda));
 	}
@@ -49,11 +48,11 @@ public class GestioneClientiTest extends SpringTest<GestioneClienti> {
 		String cf = "ALALA" + rd.nextInt(23000) + "BIZIO";
 
 
-		Assert.assertTrue(gest.aggiungiCliente("Fabbrizzio", "alala", cf,
+		Assert.assertTrue(gest.aggiungiCliente("Mario", "Rossi", cf,
 				CategoriaCliente.Privato, "34015212",
 				emailPrivato, "Italia",
 				"Torino", "TO", 3, "B", CategoriaVia.largo, "Stretto", 10146,
-				"69", "suuuuuuuper") == 1);
+				"69", "privato") == 1);
 		testAttivaCliente(emailPrivato);
 	}
 

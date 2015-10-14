@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import it.alfasoft.ecommerce.clienti.bo.Cliente;
 import it.alfasoft.ecommerce.clienti.bo.GeneraMailConferma;
 import it.alfasoft.ecommerce.clienti.bo.GestioneClienti;
 import it.alfasoft.ecommerce.clienti.dao.AziendaDaoDto;
@@ -103,5 +104,6 @@ public class ClientiDaoTest extends SpringTest<DaoClienti> {
 		dao.aggiungiCliente(a);
 		return a;
 	}
+
 	
 }

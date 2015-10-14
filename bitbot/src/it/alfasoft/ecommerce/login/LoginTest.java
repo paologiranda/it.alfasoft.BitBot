@@ -90,11 +90,14 @@ public class LoginTest {
 //		}
 //	}
 	@Test
-	public void searchDataForAzienda() throws ErroreSistema,
+	public void searchCustomer() throws ErroreSistema,
 			ClienteNonattivo, ClassNotFoundException, SQLException {
-		DaoLogin dao = new DaoLogin();
+		SearchForName searchForName = null;
 		String mail = "azienda@gmail.com";
-		Assert.assertNotNull(dao.searchDataForAzienda(mail));
+		
+		Assert.assertNotNull(searchForName.searchUtente(mail));
 	}
+	
+	
 	
 }

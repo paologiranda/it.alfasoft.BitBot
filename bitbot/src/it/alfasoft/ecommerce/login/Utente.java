@@ -5,6 +5,7 @@ public class Utente {
 	private Profilo profilo;
 	private String mail;
 	private String token;
+	private String nome;
 
 	public Utente(String cod, Profilo p, String m) {
 		setCodUtente(cod);
@@ -12,11 +13,20 @@ public class Utente {
 		setMail(m);
 	}
 
-	public Utente(String cod, Profilo p, String m,String t) {
+	public Utente(String cod, Profilo p, String m,String t,String n) {
 		setCodUtente(cod);
 		setProfilo(p);
 		setMail(m);
 		setToken(t);
+		setNome(n);
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public String setNome(String nome) {
+		return this.nome = nome;
 	}
 
 	public void setToken(String t) {
@@ -49,5 +59,6 @@ public class Utente {
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
+
 
 }
