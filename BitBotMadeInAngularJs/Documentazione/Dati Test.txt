@@ -1,0 +1,13 @@
+Test per Login
+
+Caso Admin:
+mail: paologiranda@gmail.com   
+pwd:  paolo
+
+Caso Privato
+mail: privato@gmail.com
+pwd: privato
+
+Caso Azienda
+mail: azienda@gmail.com
+pwd:  azienda
