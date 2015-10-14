@@ -16,10 +16,12 @@ public class Login implements ILogin {
 			try {
 				ut = db.searchCliente(mail, pwd);
 				ut.setToken(Generatoretoken.generatoken("U"));
+				ut.setNome(db.searchDataForPrivati(mail));
 			} catch (LoginErrato e) {
 				try {
 					ut = db.searchAdmin(mail, pwd);
 					ut.setToken(Generatoretoken.generatoken("A"));
+					ut.setNome(db.searchDataForAdmin(mail));
 				} catch (LoginErrato e1) {
 					throw new LoginErrato();
 				}
