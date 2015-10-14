@@ -61,7 +61,7 @@ angular.module('bitBotApp')
 		  $scope.datiPrivatoTot = nome + cognome + cf + telefono + tipovia + nomevia + numerocivico + scala + piano 
 		  					+ citta + provincia + cap + paese + mail + pwd;
 		  
-//			  console.log($scope.datiPrivatoTot);
+			  console.log($scope.datiPrivatoTot);
 			  /*if(($scope.Privato.mail1 != $scope.Privato.mail2)&&
 				($scope.Privato.password1 != $scope.Privato.password2)){
 				  console.log('Errore');
@@ -78,15 +78,15 @@ angular.module('bitBotApp')
 				  $http.get(callServiceError).
         		  success(function(data){
 //        		   		console.log(data);
-        		   				if(data != null){
-        		   					$scope.errore = data;
-//        		   					console.log($scope.errore);
-        		   					$scope.showErrorReg = true;
-        		   				}else{	
+//        		   				if(data != null){
+//        		   					$scope.errore = data;
+////        		   					console.log($scope.errore);
+//        		   					$scope.showErrorReg = true;
+//        		   				}else{	
 							  	$scope.dataUser = data;
 								$location.path('/inserisciCodiceConferma');
 								regPrivato.setElemSelect(elemento);
-        		   				}
+//        		   				}
 					 
         		   		})
 			  })

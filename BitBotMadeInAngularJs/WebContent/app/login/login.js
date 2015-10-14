@@ -26,7 +26,6 @@ angular.module('bitBotApp')
     				  $location.path('/carrello');
     			  }else{
     				  $rootScope.token = res.token;
-    				  
     				  $window.location.reload();
     				  $window.location = "/";  
     			 }

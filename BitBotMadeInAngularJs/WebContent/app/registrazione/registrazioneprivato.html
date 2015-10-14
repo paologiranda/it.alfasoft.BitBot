@@ -10,12 +10,12 @@
 				<p>
 					<input type="text" class="form-control"
 						data-ng-model="Privato.nome" required maxlength="20"
-						placeholder="Nome"> <input type="text"
+						placeholder="Nome"><br> <input type="text"
 						class="form-control" data-ng-model="Privato.cognome" required
-						maxlength="20" placeholder="Cognome"> <input type="text"
+						maxlength="20" placeholder="Cognome"> <br><input type="text"
 						class="form-control" data-ng-model="Privato.cf" required
 						maxlength="16" placeholder="Codice Fiscale"><br>
-				</p>
+				</p><br>
 				<input type="number" class="form-control"
 					data-ng-model="Privato.telefono" min="0" max="999999999999"
 					required placeholder="Telefono">
@@ -24,14 +24,13 @@
 			<div class="form-inline" align="left">
 				<legend>Indirizzo</legend>
 				<p>
-					<select class="form-control" ng-model="Privato.tipovia">
-						<option ng-repeat="x in tipovia">{{x}}</option>
+					<select class="form-control" ng-model="Privato.tipovia" ng-options="value for value in tipovia">
 					</select>
 				</p>
 				<p>
 					<input type="text" class="form-control"
 						data-ng-model="Privato.nomevia" required maxlength="40"
-						placeholder="Nome via" /> <input type="text" class="form-control"
+						placeholder="Nome via" /><br> <input type="text" class="form-control"
 						data-ng-model="Privato.numerocivico" required maxlength="5"
 						placeholder="numero civico" /> <input type="text"
 						class="form-control" data-ng-model="Privato.scala" maxlength="2"
@@ -82,7 +81,7 @@
 		</form>
 		<div ng-if="showErrorReg" class="alert alert-danger" role="alert">
 			<span class="glyphicon glyphicon-exclamation-sign"
-			aria-hidden="false"></span>{{ errore }}aa
+			aria-hidden="false"></span>{{ errore }}
 		</div>
 	</div>
 </div>

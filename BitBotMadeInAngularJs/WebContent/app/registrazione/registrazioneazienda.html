@@ -18,8 +18,7 @@
 			<div class="form-inline" align="left">
 				<legend>Indirizzo</legend>
 				<p>
-					<select class="form-control" ng-model="Azienda.tipovia">
-						<option ng-repeat="x in tipovia">{{x}}</option>
+					<select class="form-control" ng-model="Azienda.tipovia" ng-options="value for value in tipovia">
 					</select> <input type="text" ng-model="Azienda.nomevia" required
 						maxlength="40" class="form-control" placeholder="Nome via" /> <input
 						type="text" ng-model="Azienda.numerocivico" required maxlength="5"
