@@ -13,8 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DAOLocalita extends ADao implements IDAOLocalita {
-
-	private static String SQLREGIONI = "SELECT * FROM REGIONI";
+	private static int MAX_REGIONI = 21;
+	private static String SQLREGIONI = "SELECT * FROM REGIONI WHERE IDREGIONE<"+MAX_REGIONI;
 
 	public DAOLocalita() throws ClassNotFoundException {
 		super();
