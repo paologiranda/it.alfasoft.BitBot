@@ -5,21 +5,25 @@ angular.module('bitBotApp')
                             function($scope, addProd, $http, $location,$window,apiConf,$rootScope,$routeParams) {
 
 	$scope.elemAggiunto = addProd.getElemSelect();
+	$scope.isEmpty = true;
 	$scope.UserNotLoggato = false;
 	var carrelloCallService =  apiConf.server + apiConf.base_url + '/ordini/visualizzaCarrello?codCliente=24';
 	$http.get(carrelloCallService)
 	.success(function(data){
+		if(data){
+		$scope.isEmpty=false;
 			$scope.carrello = data;
 			var carrelloTemp = $scope.carrello;
 			$scope.remove = function(carrelloTemp) {
-				var x = 'codProd' + '=' + 'DOMO002';
-				var callService =  apiConf.server + apiConf.base_url + '/ordini/eliminaProdottoCarrello?'+x;
+				var item = 'codProd' + '=' + 'DOMO002';
+				var callService =  apiConf.server + apiConf.base_url + '/ordini/eliminaProdottoCarrello?'+item;
 				$http.get(callService)
 				.success(function(data){
 					console.log(data);
 					$window.location.reload();	
 				})			
-			}			
+			}	
+		}
 	})	
 	$scope.empty = function(){
 		var logout =   apiConf.server + apiConf.base_url + '/login/logout';

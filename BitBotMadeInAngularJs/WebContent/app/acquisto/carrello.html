@@ -5,7 +5,7 @@
 </span> -->
 
 
-<span ng-if="carrello == null">
+<span ng-if="isEmpty">
 	<div class="consultaCatologo">
 		<img src="assets/images/avviso_carrello_vuoto.jpg"> <a
 			class="btn  active" role="button" ng-href="#/categoria">Consulta
@@ -14,14 +14,14 @@
 	<hr>
 </span>
 
-<div class="page-header" ng-if="carrello!= null">
+<div class="page-header" ng-if="!isEmpty">
 	<div align="right" style="margin-bottom: 10px;">
 		<a ng-click="empty()" class="btn btn active">Svuota carrello</a>
 	</div>
 	<ul class="list-group">
-		<li class="list-group-item" ng-repeat="x in carrello">Prodotto :
-			{{ x.codiceProdotto }} , quantit√† : {{ x.qtaOrdinata }} <a
-			class="btn btn-danger" role="button" ng-click="remove()"
+		<li class="list-group-item" ng-repeat="item in carrello">Prodotto :
+			{{ item.nomeProdotto }} , quantit‡: {{ item.qtaOrdinata }} <a
+			class="btn btn-danger" align="right" role="button" ng-click="remove()"
 			aria-label="Remove">Delete</a>
 		</li>
 	</ul>
