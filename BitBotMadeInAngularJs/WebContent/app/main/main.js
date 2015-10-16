@@ -9,6 +9,8 @@ angular.module('app')
 		   $scope.prodotti = data;
 	 });
 	 
+	 $rootScope.home = self.location.href;
+	 
 	 	var url = apiConf.server + apiConf.base_url + '/login/loggato';
 	 	$http.get(url)
  		.success(function(data){

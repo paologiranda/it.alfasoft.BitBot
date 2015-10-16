@@ -35,6 +35,10 @@ angular.module('app').controller('LoginCtrl',['$scope','$http','$location','$win
 	     if($scope.userNonLoggato){
 	    	$scope.checkLogin=true;    	
 	     }	
+	    var home = $rootScope.home;
+	 	if(home == "http://localhost:9000/#/"){
+	 		$scope.checkLogin= false;
+	 	}
 }]);
     
 

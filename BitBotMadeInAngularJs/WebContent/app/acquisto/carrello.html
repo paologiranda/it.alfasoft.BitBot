@@ -20,11 +20,20 @@
 		</div>
 	</div>
 	<div class="row">
-		<div ng-repeat="item in carrello">
+		<div ng-repeat="item in carrello" align="center">
 			<div class="col-sm-6 col-md-6">
-				{{ item.nomeProdotto }} <br> Quantit&aacute;:
-				{{item.qtaOrdinata }} <a class="btn btn-danger" role="button"
-					ng-click="remove({{'item'}})" aria-label="Remove">Delete</a>
+			<div class="title">{{ item.nomeProdotto }}</div>
+				<img src="assets/images/img_01.png">
+				<div class="categoryTitle">
+					
+					
+					Quantit&aacute;:
+					{{item.qtaOrdinata }}
+					<div class="categoryTitle">
+						<a class="btn btn-danger" role="button"
+							ng-click="remove({{'item'}})" aria-label="Remove">Delete</a>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
