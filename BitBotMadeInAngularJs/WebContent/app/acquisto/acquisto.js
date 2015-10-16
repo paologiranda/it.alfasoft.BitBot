@@ -13,19 +13,21 @@ angular.module('app')
 		if(res){
 			$scope.isEmpty=false;
 			$scope.carrello = res;
-			var carrelloTemp = $scope.carrello;
-			var codiceProdotto = $scope.carrello.codiceProdotto;
-			$scope.remove = function(carrelloTemp) {
-				var item = 'codProd' + '=' + codiceProdotto;
-				var callService =  apiConf.server + apiConf.base_url + '/ordini/eliminaProdottoCarrello?'+item;
-				$http.get(callService)
-				.success(function(data){
-					console.log(data);
-					$window.location.reload();	
-				})			
-			}	
 		}
 	})	
+	$scope.remove = function() {
+			var carrelloTemp = {};
+			carrelloTemp = $scope.carrello;
+			var codiceProdotto = carrelloTemp[0].codiceProdotto;
+			var item = 'codProd' + '=' + codiceProdotto;
+			var callService =  apiConf.server + apiConf.base_url + '/ordini/eliminaProdottoCarrello?'+item;
+			$http.get(callService)
+			.success(function(data){
+//				console.log(data);
+				alert("Hai eliminato con successo il prodotto");
+				$window.location.reload();	
+			})			
+		}	
 	$scope.empty = function(){
 		var logout =   apiConf.server + apiConf.base_url + '/login/logout';
     	$http.get(logout)

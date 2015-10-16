@@ -13,24 +13,24 @@
 	</div>
 	<hr>
 </span>
-<span ng-if="!isEmpty">
+<div ng-if="!isEmpty">
 	<div align="right" style="margin-bottom: 10px;">
 		<a ng-click="empty()" class="btn btn active">Svuota carrello</a>
 	</div>
 	<div class="row">
-		<div class="col-xs-6 col-md-6">
-			<span ng-repeat="item in carrello"> Nome prodotto : {{
-				item.nomeProdotto }} <br> Quantit&aacute;: {{item.qtaOrdinata
-				}}
-			</span>
-		</div>
- 		<div class="col-sm-6">
-			<a class="btn btn-danger" role="button" ng-click="remove(item)"
-				aria-label="Remove">Delete</a>
-		</div>
+		<span ng-repeat="item in carrello">
+			<div class="col-xs-6 col-md-6">
+				<h3>Nome prodotto</h3>
+				: {{ item.nomeProdotto }} <br> Quantit&aacute;:
+				{{item.qtaOrdinata }}
+			</div>
+			<div class="col-sm-6">
+				<a class="btn btn-danger" role="button"
+					ng-click="remove({{'item'}})" aria-label="Remove">Delete</a>
+			</div>
+		</span>
+	</div>	
+	<div align="right">
+		<a class="btn btn active" role="button" ng-click="confermaOrdine()">Procedi
+			con l'acquisto</a>
 	</div>
-</span>
-<div align="right">
-	<a class="btn btn active" role="button" ng-click="confermaOrdine()">Procedi
-		con l'acquisto</a>
-</div>
