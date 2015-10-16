@@ -46,9 +46,11 @@ angular.module('app')
 		.success(function(data) {
 			$scope.loggato = data;
 			if ($scope.loggato == null) {
-				$rootScope.$broadcast("fromCarrello");
-				var whereAreYouFrom = self.location.href;// recupera l'url della pagina
-				$rootScope.whereAreYouFrom = whereAreYouFrom;
+				$scope.loggatoNull="IsNotLoggato";
+				$rootScope.$broadcast("alertMsg",$scope.loggatoNull);
+//				{view:true,applicationArea:confArea.app_name,tplId:['avanti']}
+				var IamFromCarrello = self.location.href;// recupera l'url della pagina
+				$rootScope.DoYouFromCarrello = IamFromCarrello;
 //				$rootScope.userNonLoggato="Effettua il login prima di procedere con l'acquisto";// variabile che uso se non è loggato e lo reindizzo al login
 				$location.path('/login');
 			}else{
@@ -67,4 +69,18 @@ angular.module('app')
 		  console.log(data);
 	  })  
 	  
-  }]);
+ }]);
+// angular.module('app') 
+//  .controller('ModalAlertsCtrl',['$scope','$rootScope',
+//		  function($scope,$rootScope){
+//	  
+//	  var alertMsg=$rootScope.$on("alertMsg", function (args) {
+//		    var template = "partials/msg.tpl.html";
+//		    template = "#" +"/"+template;
+//	
+//		    alertMsg();
+//		    
+//
+//		  });
+//
+//  }]);

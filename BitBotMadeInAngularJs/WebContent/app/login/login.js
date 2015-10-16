@@ -30,19 +30,17 @@ angular.module('app').controller('LoginCtrl',['$scope','$http','$location','$win
     		})
     	 }
     // gestione della navigazione per mostrare o meno i messaggi di accesso all area risevata per proseguire con l'acquisto
-    	var whereAreYouFrom = $rootScope.whereAreYouFrom;
+    	var IamFromCarrello = $rootScope.DoYouFromCarrello;
     	$scope.isAuthentic = false;
-    	if(whereAreYouFrom){
-    		$scope.$watch("fromCarrello", function (event, args) {
-//			console.log(args);  
+    	if(IamFromCarrello){
+    		$scope.$watch("alertMsg", function (event, args) {
+//			var a = args.scope.loggatoNull;  
 			$scope.isAuthentic = true;
 		  });
     	}
-	    var home = $rootScope.home;
-	    if(home){
-	    	if(home == "http://localhost:9000/#/"){
+	    var IamFromHome = $rootScope.DoyouFromHome;
+	    if(IamFromHome &&(IamFromHome == "http://localhost:9000/#/")){
 	    		$scope.isAuthentic = false;
-	 		}
 	    }
 	 	
 }]);
