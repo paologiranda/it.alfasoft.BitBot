@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('bitBotApp')
+angular.module('app')
   .controller('myShopppingCtrl',['$scope','$http','API_CONF','$rootScope',
                                  function ($scope,$http,apiConf,$rootScope) {
 	  

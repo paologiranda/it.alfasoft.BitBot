@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('bitBotApp')
+angular.module('app')
 .controller('CarrelloCtrl',['$scope', 'addProd', '$http', '$location','$window','API_CONF','$rootScope','$routeParams', 
                             function($scope, addProd, $http, $location,$window,apiConf,$rootScope,$routeParams) {
 
@@ -9,13 +9,14 @@ angular.module('bitBotApp')
 	$scope.UserNotLoggato = false;
 	var carrelloCallService =  apiConf.server + apiConf.base_url + '/ordini/visualizzaCarrello?codCliente=24';
 	$http.get(carrelloCallService)
-	.success(function(data){
-		if(data){
-		$scope.isEmpty=false;
-			$scope.carrello = data;
+	.success(function(res){
+		if(res){
+			$scope.isEmpty=false;
+			$scope.carrello = res;
 			var carrelloTemp = $scope.carrello;
+			var codiceProdotto = $scope.carrello.codiceProdotto;
 			$scope.remove = function(carrelloTemp) {
-				var item = 'codProd' + '=' + 'DOMO002';
+				var item = 'codProd' + '=' + codiceProdotto;
 				var callService =  apiConf.server + apiConf.base_url + '/ordini/eliminaProdottoCarrello?'+item;
 				$http.get(callService)
 				.success(function(data){
@@ -53,14 +54,14 @@ angular.module('bitBotApp')
 		})
 	}
 }]);
- angular.module('bitBotApp')
- .controller('SceltapagamentoCtrl', function ($scope,$http) {
-
-	  var callService = 'http://localhost:8081/rest/ordini/confermaOrdine';	
+ angular.module('app')
+ .controller('SceltapagamentoCtrl',['$scope','$http','API_CONF',
+                                    function ($scope,$http,apiConf) {
+	 
+   var callService = apiConf.server + apiConf.base_url + '/ordini/confermaOrdine';	
 	  $http.get(callService)  
 	  .success(function(data){
 		  console.log(data);
-	  })
+	  })  
 	  
-	  
-  });
+  }]);

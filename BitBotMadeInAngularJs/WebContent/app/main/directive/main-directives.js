@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('bitBotApp')
+angular.module('app')
   .directive('slideShow', function () {
 	  return {
 		    restrict : 'E',		   

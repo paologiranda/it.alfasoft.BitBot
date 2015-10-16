@@ -7,7 +7,7 @@
  * # addProd
  * Service in the bitBotApp.
  */
-angular.module('bitBotApp')
+angular.module('app')
   .service('regPrivato', function () {
 
     var elem = [];

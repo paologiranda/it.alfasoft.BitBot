@@ -7,7 +7,7 @@
  * # RegistrazioneeffettuataCtrl
  * Controller of the bitBotApp
  */
-angular.module('bitBotApp')
+angular.module('app')
   .controller('codiceConfermaCtrl',['$scope','$http','regPrivato','$location',
                                     function($scope,$http,regPrivato,$location){
   		

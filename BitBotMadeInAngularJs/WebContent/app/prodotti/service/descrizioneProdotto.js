@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('bitBotApp')
+angular.module('app')
 .factory('addToShop',['$http','API_CONF','$resource','$window','$location',
                       function($http,apiConf,$resource,$window,$location){
 	return{

@@ -7,7 +7,7 @@
  * # addProd
  * Service in the bitBotApp.
  */
-angular.module('bitBotApp')
+angular.module('app')
   .service('addProd', function () {
 
     var elem = [];

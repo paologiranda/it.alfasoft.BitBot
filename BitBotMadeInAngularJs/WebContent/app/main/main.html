@@ -20,17 +20,17 @@
 	</div>
 	<div class="row">
 		<div class="col-lg-6">
-			<div ng-repeat="x in prodotti | filter:searchItem |limitTo:4 ">
+			<div ng-repeat="item in prodotti | filter:searchItem |limitTo:4 ">
 				<div class="col-lg-6" align="center">
 					<h4>
 						<p>
-							<strong>{{ x.nome }}</strong>
+							<strong>{{ item.nome }}</strong>
 						</p>
 					</h4>
-					<img src="assets/images/img_01.png" title={{x.descrizione}}><br>
-					<div class="caption">Euro {{ x.prezzo }}</div>
+					<img src="assets/images/img_01.png" title={{item.descrizione}}><br>
+					<div class="caption">Euro {{ item.prezzo }}</div>
 					<a class="btn btn active" role="button" ng-href="#/descrizione"
-						ng-click="selected(x)" style="margin-bottom: 10px">Entra</a>
+						ng-click="selected(item)" style="margin-bottom: 10px">Entra</a>
 				</div>
 			</div>
 		</div>

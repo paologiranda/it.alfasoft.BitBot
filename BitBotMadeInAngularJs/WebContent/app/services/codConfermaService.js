@@ -7,7 +7,7 @@
  * # codConfermaService
  * Service in the bitBotApp.
  */
-angular.module('bitBotApp')
+angular.module('app')
   .service('codConfermaService', function () {
    
   var codiceConferma="";

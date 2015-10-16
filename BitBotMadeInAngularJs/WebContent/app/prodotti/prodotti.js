@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('bitBotApp')
+angular.module('app')
    	.controller('CategoriaCtrl',['$scope','$http','categoriaService','API_CONF','addToShop','showCategory','showSubCategory',
    	           function ($scope,$http,categoriaService,apiConf,addToShop,showCategory,showSubCategory) {
    		

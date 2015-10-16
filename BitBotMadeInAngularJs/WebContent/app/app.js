@@ -8,14 +8,14 @@
  *
  * Main module of the application.
  */
-angular.module('bitBotApp', [
+angular.module('app', [
 			    'ngAnimate',
 			    'ngCookies',
 			    'ngResource',
 			    'ngRoute',
 			    'ngSanitize',
 			    'ngTouch',
-			    'bitBotApp.resources',	
+			    'app.resources',	
 			    'ngStorage',
 			    'angular-loading-bar'
 			  ])

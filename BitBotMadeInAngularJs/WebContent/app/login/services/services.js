@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('bitBotApp')
+angular.module('app')
     .factory('loginFactory', ['$http', '$localStorage','API_CONF',
                              function($http, $localStorage,apiConf){
    

@@ -7,7 +7,7 @@
  * # callServiceResource
  * factory in the bitBotApp.
  */
-angular.module('bitBotApp.resources',['ngResource'])
+angular.module('app.resources',['ngResource'])
   .factory('callItem',['$resource','API_CONF', 
     function($resource,apiConf) {	
 	    	var callService = apiConf.server + apiConf.base_url + '/prodotti/elenco2';

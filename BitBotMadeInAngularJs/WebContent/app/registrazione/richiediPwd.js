@@ -7,7 +7,7 @@
  * # richiediPwdCtrl
  * Controller of the bitBotApp
  */
-angular.module('bitBotApp')
+angular.module('app')
   .controller('richiediPwdCtrl', function ($scope,$http) {
 	  
 	  $scope.newPwd = "";

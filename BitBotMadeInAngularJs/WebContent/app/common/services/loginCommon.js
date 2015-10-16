@@ -5,7 +5,7 @@
  * @name bitBotApp.service:loginCommon
  * @description # loginCommon service of the bitBotApp
  */
-angular.module('bitBotApp')
+angular.module('app')
   .service('loginCommon',[ function(){
 
 	  var utente = {};	

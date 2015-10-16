@@ -7,7 +7,7 @@
  * # data
  * Service in the bitBotApp.
  */
-angular.module('bitBotApp')
+angular.module('app')
   .service('subCatService', function () {
    
     var item=[];

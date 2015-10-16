@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('bitBotApp')
+angular.module('app')
  .controller('MainCtrl',['$scope','dataSc','$http','$location','$window','callItem',
                          'API_CONF','callLoggato','loginCommon','$rootScope',
     function($scope,dataSc,$http,$location,$window,callItem,apiConf,callLoggato,loginCommon,$rootScope) {

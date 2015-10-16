@@ -7,7 +7,7 @@
  * # menuUtente
  * Controller of the bitBotApp
  */
-angular.module('bitBotApp')
+angular.module('app')
   .directive('menuUtente', function () {
 	  return {
 		  restrict : 'E',		  

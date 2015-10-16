@@ -7,7 +7,7 @@
  * # RegistrazioneCtrl
  * Controller of the bitBotApp
  */
-angular.module('bitBotApp')
+angular.module('app')
   .controller('RegistrazioneCtrl', function ($scope) {
 
   });

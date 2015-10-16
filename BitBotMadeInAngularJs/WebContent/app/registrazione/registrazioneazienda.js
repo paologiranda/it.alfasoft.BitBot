@@ -5,7 +5,7 @@
  * @name bitBotApp.controller:RegistrazioneaziendaCtrl
  * @description # RegistrazioneaziendaCtrl Controller of the bitBotApp
  */
-angular.module('bitBotApp')
+angular.module('app')
   .controller('RegistrazioneaziendaCtrl',['$scope','$http','$location','regPrivato','API_CONF',
                function ($scope,$http,$location,regPrivato,apiConf) {
 	 
