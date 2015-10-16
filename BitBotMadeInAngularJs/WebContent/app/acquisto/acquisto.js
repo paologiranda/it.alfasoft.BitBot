@@ -46,9 +46,10 @@ angular.module('app')
 		.success(function(data) {
 			$scope.loggato = data;
 			if ($scope.loggato == null) {
+				$rootScope.$broadcast("fromCarrello");
 				var whereAreYouFrom = self.location.href;// recupera l'url della pagina
 				$rootScope.whereAreYouFrom = whereAreYouFrom;
-				$rootScope.userNonLoggato="Effettua il login prima di procedere con l'acquisto";// variabile che uso se non è loggato e lo reindizzo al login
+//				$rootScope.userNonLoggato="Effettua il login prima di procedere con l'acquisto";// variabile che uso se non è loggato e lo reindizzo al login
 				$location.path('/login');
 			}else{
 				$location.path('/sceltaPagamento');

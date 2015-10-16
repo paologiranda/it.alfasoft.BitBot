@@ -5,8 +5,8 @@
 	</div>
 	<!-- Mostro solo se non è loggato -->
 	<div class="row">
-		<div class="col-xs-12 col-md-12">
-			<span class="alert alert-danger" align="center" ng-if="checkLogin">{{userNonLoggato}}</span>
+		<div class="col-xs-12 col-md-12" ng-if="isAuthentic">
+			<span class="alert alert-danger" align="center">Effettua il login prima di procedere con l'acquisto</span>
 		</div>
 	</div>
 	<div class="row">
