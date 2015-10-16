@@ -10,44 +10,48 @@
 		</div>
 	</div>
 	<div class="row">
-		<p><h4>Accedi alla tua area riservata</h4></p>
-		<div class="row">
-			<div class="col-sm-6">
-				<form ng-submit="submitForm()">
-					<fieldset>
-						<label>Email</label>
-						<p>
-							<input type="email" class="form-control" ng-model="email"
-								required placeholder="Nome utente">
-						</p>
-
-						<div class="form-group">
-							<label>Password</label>
+		<div class="col-sm-6 col-md-6">
+			<p>
+			<h4>Accedi alla tua area riservata</h4>
+			</p>
+			<div class="row">
+				<div class="col-sm-6">
+					<form ng-submit="submitForm()">
+						<fieldset>
+							<label>Email</label>
 							<p>
-								<input type="password" class="form-control" ng-model="password"
-									required placeholder="Password">
+								<input type="email" class="form-control" ng-model="email"
+									required placeholder="Nome utente">
 							</p>
-						</div>
-						<div class="checkbox">
-							<label> <input type="checkbox"> Remember me
-							</label>
-						</div>
-						<p>
-							<span>
-								<button class="btn btn active" type="submit"
-									class="btn btn active">Sign in</button>
-							</span>
-						</p>
-					</fieldset>
-				</form>
-			</div>
-			<div class="col-sm-6" align="right">
-				<p>
-					<a ng-href="#/registrazione" style="text-decoration: none">Crea
-						un nuovo account</a>
-				</p>
-				<a ng-href="#/richiediPwd" style="text-decoration: none">Hai
-					dimenticato le credenziali</a>
+
+							<div class="form-group">
+								<label>Password</label>
+								<p>
+									<input type="password" class="form-control" ng-model="password"
+										required placeholder="Password">
+								</p>
+							</div>
+							<div class="checkbox">
+								<label> <input type="checkbox"> Remember me
+								</label>
+							</div>
+							<p>
+								<span>
+									<button class="btn btn active" type="submit"
+										class="btn btn active">Sign in</button>
+								</span>
+							</p>
+						</fieldset>
+					</form>
+				</div>
+				<div class="col-sm-6" align="right">
+					<p>
+						<a ng-href="#/registrazione" style="text-decoration: none">Crea
+							un nuovo account</a>
+					</p>
+					<a ng-href="#/richiediPwd" style="text-decoration: none">Hai
+						dimenticato le credenziali</a>
+				</div>
 			</div>
 		</div>
 	</div>
