@@ -28,15 +28,12 @@
 <!-- //fonts -->
     <!-- endbuild -->
   </head>
-  <body ng-app="bitBotApp">
+  <body ng-app="app">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <hea-der></hea-der>
-    
-    <div class="container">
-         <div ng-view=""></div>
-    </div>
+    <div ng-view=""></div>
 
     <div ng-include src="'app/common/footer.html'">
     </div>

@@ -10,40 +10,37 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
-		<servlet-name>jersey</servlet-name>
-		<servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
-		<init-param>
-			<param-name>com.sun.jersey.config.property.packages</param-name>
-			<param-value>it.bitBot.rest</param-value>
-		</init-param>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>jersey</servlet-name>
-		<url-pattern>/rest/*</url-pattern>
-	</servlet-mapping>
-	<filter>
-		<filter-name>Filtro</filter-name>
-		<filter-class>it.bitBot.filter.Proxy</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>Filtro</filter-name>
-		<url-pattern>*</url-pattern>
-	</filter-mapping>
-  		<!-- Mapping servizi Ordini -->
-		<servlet>
-		<servlet-name>serviziOrdini</servlet-name>
-		<servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
-		<init-param>
-			<param-name>com.sun.jersey.config.property.packages</param-name>
-			<param-value>it.bitBot.rest</param-value>
-		</init-param>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>serviziOrdini</servlet-name>
-		<url-pattern>/servizi/*</url-pattern>
-	</servlet-mapping>
-	<!-- Fine mapping Ordini -->
-
+    <servlet-name>jersey</servlet-name>
+    <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+    <init-param>
+      <param-name>com.sun.jersey.config.property.packages</param-name>
+      <param-value>it.bitBot.rest</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>jersey</servlet-name>
+    <url-pattern>/rest/*</url-pattern>
+  </servlet-mapping>
+  <filter>
+    <filter-name>Filtro</filter-name>
+    <filter-class>it.bitBot.filter.Proxy</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>Filtro</filter-name>
+    <url-pattern>*</url-pattern>
+  </filter-mapping>
+  <servlet>
+    <servlet-name>serviziOrdini</servlet-name>
+    <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+    <init-param>
+      <param-name>com.sun.jersey.config.property.packages</param-name>
+      <param-value>it.bitBot.rest</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>serviziOrdini</servlet-name>
+    <url-pattern>/servizi/*</url-pattern>
+  </servlet-mapping>
 </web-app>
