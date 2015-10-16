@@ -8,6 +8,7 @@ import java.util.List;
 import it.alfasoft.ecommerce.acquisto.GestioneOrdini;
 import it.alfasoft.ecommerce.acquisto.IDAOOrdine;
 import it.alfasoft.ecommerce.acquisto.DAO.DAOOrdine;
+import it.alfasoft.ecommerce.acquisto.DAO.DAOProdottiOrdinati;
 import it.alfasoft.ecommerce.acquisto.dto.Ordine;
 import it.alfasoft.ecommerce.acquisto.dto.ProdottoOrdinato;
 import it.alfasoft.ecommerce.clienti.bo.ClienteNome;
@@ -41,6 +42,8 @@ public class ServiziOrdini {
 	IDAOMagazzino mg = null;
 	private String url="jdbc:oracle:thin:@//localhost:1521/XE";
 
+	
+	
 	@Path("/inserisciCarrello")
 	@GET
 	@Produces("application/json")
@@ -85,6 +88,8 @@ public class ServiziOrdini {
 			if (prod!=null){
 
 				po=new ProdottoOrdinato(codProd, Integer.parseInt(qta), 0, prod.getPrezzo(), 21);
+//				po=new ProdottoOrdinato(codProd, Integer.parseInt(qta), 0, prod.getPrezzo(), 21,prod.getNome());
+				po.setNomeProdotto(prod.getNome());
 				carrello.add(po);
 				ris = gson.toJson(po);
 			}
