@@ -1,8 +1,9 @@
 'use strict';
 
 
-angular.module('app').controller('LoginCtrl',['$scope','$http','$location','$window','API_CONF','$rootScope','loginFactory','$localStorage','erroriProvenientiDalServer','$timeout',
-		function ($scope,$http,$location,$window,apiConf,$rootScope,loginFactory,$localStorage,erroriProvenientiDalServer,$timeout) {
+angular.module('app').controller('LoginCtrl',['$scope','$http','$location','$window','API_CONF','$rootScope','loginFactory',
+                                              '$localStorage','erroriProvenientiDalServer','$timeout','$modal',
+		function ($scope,$http,$location,$window,apiConf,$rootScope,loginFactory,$localStorage,erroriProvenientiDalServer,$timeout,$modal) {
     
     $scope.errorFromServer = false;
     var IamFromCarrello = $rootScope.DoYouFrom;
@@ -16,7 +17,13 @@ angular.module('app').controller('LoginCtrl',['$scope','$http','$location','$win
     		 if (res == "") {     		 			
     		 		erroriProvenientiDalServer.query(function(data){
     		 		$scope.errorFromServer = true; 
-    	 			$scope.new_string=data; 
+    	 			$rootScope.credenziali_errate="Credenziali errate"; 
+    	 			
+    	 			var modalInstance = $modal.open({
+    					templateUrl: 'erroriFromServer.html',
+    					controller: 'ModalCtrl',
+    					resolve: {}
+    				})
     		 		});
     		 }else{
 //				   $localStorage.token = res.data.token;
