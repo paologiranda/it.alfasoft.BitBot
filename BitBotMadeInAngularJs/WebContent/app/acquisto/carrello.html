@@ -1,10 +1,4 @@
 
-<!-- <span ng-if="UserNotLoggato" class="alert alert-danger" role="alert">
-	<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="false"></span>
-	<a ng-href="#/login">Devi essere loggato prima di poter procedere con l acquisto</a>
-</span> -->
-
-
 <span ng-if="isEmpty">
 	<div class="consultaCatologo">
 		<img src="assets/images/avviso_carrello_vuoto.jpg"> <a
@@ -22,15 +16,14 @@
 	<div class="row">
 		<div ng-repeat="item in carrello" align="center">
 			<div class="col-sm-6 col-md-6">
-			<div class="title">{{ item.nomeProdotto }}</div>
+				<div class="title">{{ item.nomeProdotto }}</div>
 				<img src="assets/images/img_01.png">
 				<div class="categoryTitle">
-					
-					
-					Quantit&aacute;:
-					{{item.qtaOrdinata }}
+
+
+					Quantit&aacute;: {{item.qtaOrdinata }}
 					<div class="categoryTitle">
-						<a class="btn btn-danger" role="button"
+						<a class="btn btn-info" role="button"
 							ng-click="remove({{'item'}})" aria-label="Remove">Delete</a>
 					</div>
 				</div>
@@ -39,7 +32,10 @@
 	</div>
 	<div class="row">
 		<div align="right">
-			<a class="btn btn active" role="button" ng-click="confermaOrdine()">Procedi
-				con l'acquisto</a>
+			<button type="button" class="btn btn-info btn-lg"
+				ng-click="confermaOrdine()">Procedi con l'acquisto</button>
 		</div>
 	</div>
+</div>
+
+

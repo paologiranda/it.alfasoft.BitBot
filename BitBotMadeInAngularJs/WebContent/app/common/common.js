@@ -4,3 +4,7 @@ angular.module('app').controller('common', ['$scope', 'httpRequestTracker',
             return httpRequestTracker.hasPendingRequests();
         };
     }]);
+
+
+
+

@@ -18,7 +18,8 @@ angular.module('app', [
 			    'app.resources',	
 			    'ngStorage',
 			    'angular-loading-bar',
-			    'app.httpRequestTracker'
+			    'app.httpRequestTracker',
+			    'ui.bootstrap'
 			  ])
 			  .config(['$routeProvider','$httpProvider', 
 			           function ($routeProvider,$httpProvider) {

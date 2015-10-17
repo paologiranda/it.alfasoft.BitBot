@@ -1,12 +1,13 @@
 'use strict';
 
 angular.module('app')
-.controller('CarrelloCtrl',['$scope', 'addProd', '$http', '$location','$window','API_CONF','$rootScope','$routeParams', 
-                            function($scope, addProd, $http, $location,$window,apiConf,$rootScope,$routeParams) {
+.controller('CarrelloCtrl',['$scope', 'addProd', '$http', '$location','$window','API_CONF','$rootScope','$routeParams','$modal', 
+                            function($scope, addProd, $http, $location,$window,apiConf,$rootScope,$routeParams,$modal) {
 
 	$scope.elemAggiunto = addProd.getElemSelect();
 	$scope.isEmpty = true;
 	$scope.UserNotLoggato = false;
+	$rootScope.showModal = false;
 	var carrelloCallService =  apiConf.server + apiConf.base_url + '/ordini/visualizzaCarrello?codCliente=24';
 	$http.get(carrelloCallService)
 	.success(function(res){
@@ -39,18 +40,24 @@ angular.module('app')
     		
     	})
 	}
-	
+	$scope.showModalNow=false;
 	$scope.confermaOrdine = function() {
+		$scope.showModalNow=true;
 		var loggato =  apiConf.server + apiConf.base_url + '/login/loggato';
 		$http.get(loggato)
 		.success(function(data) {
 			$scope.loggato = data;
 			if ($scope.loggato == null) {
-				$scope.loggatoNull="IsNotLoggato";
-				$rootScope.$broadcast("alertMsg",$scope.loggatoNull);
-//				{view:true,applicationArea:confArea.app_name,tplId:['avanti']}
+				$rootScope.showModal = true;
+				$rootScope.$broadcast("alertMsg");
 				var IamFromCarrello = self.location.href;// recupera l'url della pagina
 				$rootScope.DoYouFromCarrello = IamFromCarrello;
+				var modalInstance = $modal.open({
+					templateUrl: 'erroriFromServer.html',
+					controller: 'ModalCtrl',
+					resolve: {}
+				})
+				
 //				$rootScope.userNonLoggato="Effettua il login prima di procedere con l'acquisto";// variabile che uso se non è loggato e lo reindizzo al login
 				$location.path('/login');
 			}else{
@@ -70,17 +77,13 @@ angular.module('app')
 	  })  
 	  
  }]);
-// angular.module('app') 
-//  .controller('ModalAlertsCtrl',['$scope','$rootScope',
-//		  function($scope,$rootScope){
-//	  
-//	  var alertMsg=$rootScope.$on("alertMsg", function (args) {
-//		    var template = "partials/msg.tpl.html";
-//		    template = "#" +"/"+template;
-//	
-//		    alertMsg();
-//		    
-//
-//		  });
-//
-//  }]);
+angular.module('app')
+.controller('ModalCtrl', function($scope, $modalInstance){
+	
+	$scope.close = function(){
+		$modalInstance.close();
+	}
+	$scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
+    };
+})

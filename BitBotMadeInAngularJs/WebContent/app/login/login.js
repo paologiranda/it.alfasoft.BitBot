@@ -1,7 +1,8 @@
 'use strict';
 
-angular.module('app').controller('LoginCtrl',['$scope','$http','$location','$window','API_CONF','$rootScope','loginFactory','$localStorage','erroriProvenientiDalServer',
-		function ($scope,$http,$location,$window,apiConf,$rootScope,loginFactory,$localStorage,erroriProvenientiDalServer) {
+
+angular.module('app').controller('LoginCtrl',['$scope','$http','$location','$window','API_CONF','$rootScope','loginFactory','$localStorage','erroriProvenientiDalServer','$timeout',
+		function ($scope,$http,$location,$window,apiConf,$rootScope,loginFactory,$localStorage,erroriProvenientiDalServer,$timeout) {
     
     $scope.errorFromServer = false;
     var IamFromCarrello = $rootScope.DoYouFrom;
@@ -30,14 +31,15 @@ angular.module('app').controller('LoginCtrl',['$scope','$http','$location','$win
 			  } 		 
     		})
     	 }
-    // gestione della navigazione per mostrare o meno i messaggi di accesso all area risevata per proseguire con l'acquisto
+        // gestione della navigazione per mostrare o meno i messaggi di accesso all area risevata per proseguire con l'acquisto
     	var IamFromCarrello = $rootScope.DoYouFromCarrello;
     	$scope.isAuthentic = false;
     	if(IamFromCarrello){
-    		$scope.$watch("alertMsg", function (event, args) {
+    		$rootScope.$watch("alertMsg", function (event, args) {
 			$scope.isAuthentic = true;
-		  });
+    	  })
     	}
+       	//se vengo dalla home invece nascondo i mex per l acquisto
     	var IamFromHome = $rootScope.DoyouFromHome;
  	    if(IamFromHome){
  	    	$scope.$watch("alertMsg", function (event, args) {
@@ -46,8 +48,9 @@ angular.module('app').controller('LoginCtrl',['$scope','$http','$location','$win
  	    		}
  	    	})
  	    }
-	 	
 }]);
-    
+
+	
+
 
            

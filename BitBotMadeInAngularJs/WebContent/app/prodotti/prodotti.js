@@ -55,15 +55,20 @@ angular.module('app')
 				//console.log(categ);				
 		}
    }])
-    .controller('DescrizioneCtrl',['$scope','dataSc','addProd','$http','addToShop','$location',
-                                 function ($scope,dataSc,addProd,$http,addToShop,$location) {
+    .controller('DescrizioneCtrl',['$scope','dataSc','addProd','$http','addToShop','$location','$modal',
+                                 function ($scope,dataSc,addProd,$http,addToShop,$location,$modal) {
      	
       $scope.selectProd = dataSc.getSelectedProd();
       $scope.quantita=[1,2,3,4,5,6,7,8,9,10];
       
         $scope.add = function(elemento){
         	if($scope.qta==null){
-            	alert("Inserire la quantità che ti interessa");
+//            	alert("Inserire la quantità che ti interessa");
+        		var modalInstance = $modal.open({
+					templateUrl: 'erroriFromServer.html',
+					controller: 'ModalCtrl',
+					resolve: {}
+				})
             }else{
 	            addProd.setElemSelect(elemento);
 	            var itemSelected = {
