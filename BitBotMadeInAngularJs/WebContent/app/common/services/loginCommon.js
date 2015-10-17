@@ -1,12 +1,7 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name bitBotApp.service:loginCommon
- * @description # loginCommon service of the bitBotApp
- */
-angular.module('app')
-  .service('loginCommon',[ function(){
+
+angular.module('app').service('loginCommon',[ function(){
 
 	  var utente = {};	
 	  
@@ -20,4 +15,15 @@ angular.module('app')
 	  }
 	  
 	  
-  }])
+}]);
+
+angular.module('app.httpRequestTracker', []);
+angular.module('app.httpRequestTracker').factory('httpRequestTracker', ['$http', function($http){
+
+  var httpRequestTracker = {};
+  httpRequestTracker.hasPendingRequests = function() {
+    return $http.pendingRequests.length > 0;
+  };
+
+  return httpRequestTracker;
+}]);

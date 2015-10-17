@@ -17,7 +17,8 @@ angular.module('app', [
 			    'ngTouch',
 			    'app.resources',	
 			    'ngStorage',
-			    'angular-loading-bar'
+			    'angular-loading-bar',
+			    'app.httpRequestTracker'
 			  ])
 			  .config(['$routeProvider','$httpProvider', 
 			           function ($routeProvider,$httpProvider) {

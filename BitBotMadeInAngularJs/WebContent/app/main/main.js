@@ -8,8 +8,10 @@ angular.module('app')
 	 callItem.query(function(data){// chiamata tutti prodotti presenti nel
 		   $scope.prodotti = data;
 	 });
+	
 	 var IamFromHome = self.location.href;
 	 $rootScope.DoyouFromHome = IamFromHome;// recuper l url della home che mi servirà per la gestione del carrello/login
+	 $rootScope.$broadcast("alertMsg");
 	 var url = apiConf.server + apiConf.base_url + '/login/loggato';
 	 $http.get(url).success(function(data){
  		if(data){

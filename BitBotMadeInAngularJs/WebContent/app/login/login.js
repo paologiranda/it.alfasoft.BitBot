@@ -4,6 +4,7 @@ angular.module('app').controller('LoginCtrl',['$scope','$http','$location','$win
 		function ($scope,$http,$location,$window,apiConf,$rootScope,loginFactory,$localStorage,erroriProvenientiDalServer) {
     
     $scope.errorFromServer = false;
+    var IamFromCarrello = $rootScope.DoYouFrom;
     $scope.submitForm = function(){  
     	 var FormData = {
            email: $scope.email,
@@ -18,7 +19,7 @@ angular.module('app').controller('LoginCtrl',['$scope','$http','$location','$win
     		 		});
     		 }else{
 //				   $localStorage.token = res.data.token;
-    			 if(whereAreYouFrom){
+    			 if(IamFromCarrello){
     				  $window.location.reload();
     				  $location.path('/carrello');
     			  }else{
@@ -34,14 +35,17 @@ angular.module('app').controller('LoginCtrl',['$scope','$http','$location','$win
     	$scope.isAuthentic = false;
     	if(IamFromCarrello){
     		$scope.$watch("alertMsg", function (event, args) {
-//			var a = args.scope.loggatoNull;  
 			$scope.isAuthentic = true;
 		  });
     	}
-	    var IamFromHome = $rootScope.DoyouFromHome;
-	    if(IamFromHome &&(IamFromHome == "http://localhost:9000/#/")){
-	    		$scope.isAuthentic = false;
-	    }
+    	var IamFromHome = $rootScope.DoyouFromHome;
+ 	    if(IamFromHome){
+ 	    	$scope.$watch("alertMsg", function (event, args) {
+ 	    		if(IamFromHome == "http://localhost:9000/#/"){
+ 	    			$scope.isAuthentic = false;
+ 	    		}
+ 	    	})
+ 	    }
 	 	
 }]);
     
