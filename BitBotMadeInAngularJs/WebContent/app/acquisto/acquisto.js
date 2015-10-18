@@ -7,7 +7,6 @@ angular.module('app')
 	$scope.elemAggiunto = addProd.getElemSelect();
 	$scope.isEmpty = true;
 	$scope.UserNotLoggato = false;
-	$rootScope.showModal = false;
 	var carrelloCallService =  apiConf.server + apiConf.base_url + '/ordini/visualizzaCarrello?codCliente=24';
 	$http.get(carrelloCallService)
 	.success(function(res){
@@ -48,14 +47,19 @@ angular.module('app')
 		.success(function(data) {
 			$scope.loggato = data;
 			if ($scope.loggato == null) {
-				$rootScope.showModal = true;
 				$rootScope.$broadcast("alertMsg");
 				var IamFromCarrello = self.location.href;// recupera l'url della pagina
 				$rootScope.DoYouFromCarrello = IamFromCarrello;
+				$rootScope.you_must_do_login = "Accedi prima e/o registrati";
 				var modalInstance = $modal.open({
-					templateUrl: 'erroriFromServer.html',
+					templateUrl: 'app/common/alertMsg/do_log.html',
 					controller: 'ModalCtrl',
-					resolve: {}
+					resolve: {
+						you_must_do_login: function(){
+							return $scope.you_must_do_login;
+						},
+						
+					}
 				})
 				
 //				$rootScope.userNonLoggato="Effettua il login prima di procedere con l'acquisto";// variabile che uso se non è loggato e lo reindizzo al login
@@ -77,13 +81,3 @@ angular.module('app')
 	  })  
 	  
  }]);
-angular.module('app')
-.controller('ModalCtrl', function($scope, $modalInstance){
-	
-	$scope.close = function(){
-		$modalInstance.close();
-	}
-	$scope.cancel = function () {
-        $modalInstance.dismiss('cancel');
-    };
-})

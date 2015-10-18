@@ -4,7 +4,6 @@ angular.module('app')
    	.controller('CategoriaCtrl',['$scope','$http','categoriaService','API_CONF','addToShop','showCategory','showSubCategory',
    	           function ($scope,$http,categoriaService,apiConf,addToShop,showCategory,showSubCategory) {
    		
-   		
    		showCategory.query(function(data){// chiamata a servizio che ritorna l enum delle categorie presente nel database
    			$scope.categorie = data;
    		})
@@ -55,17 +54,18 @@ angular.module('app')
 				//console.log(categ);				
 		}
    }])
-    .controller('DescrizioneCtrl',['$scope','dataSc','addProd','$http','addToShop','$location','$modal',
-                                 function ($scope,dataSc,addProd,$http,addToShop,$location,$modal) {
+    .controller('DescrizioneCtrl',['$scope','dataSc','addProd','$http','addToShop','$location','$modal','$rootScope',
+                                 function ($scope,dataSc,addProd,$http,addToShop,$location,$modal,$rootScope) {
      	
       $scope.selectProd = dataSc.getSelectedProd();
       $scope.quantita=[1,2,3,4,5,6,7,8,9,10];
       
-        $scope.add = function(elemento){
-        	if($scope.qta==null){
-//            	alert("Inserire la quantità che ti interessa");
+      $scope.add = function(elemento){
+    	  if(!$scope.qta){
+        		// se la quantità non c'è apro la modale settando prima il messaggio di errore 
+        		$rootScope.ins_qta = "Inserisci la quantità prima di procedere";
         		var modalInstance = $modal.open({
-					templateUrl: 'erroriFromServer.html',
+					templateUrl: 'app/common/alertMsg/ins_qta.html',
 					controller: 'ModalCtrl',
 					resolve: {}
 				})
@@ -77,6 +77,7 @@ angular.module('app')
 	            }
 	            addToShop.buy(itemSelected,
 	            		function(res){
+	            	console.log(res);
 	            		
 	            })
             }

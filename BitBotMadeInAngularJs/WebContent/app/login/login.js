@@ -5,7 +5,8 @@ angular.module('app').controller('LoginCtrl',['$scope','$http','$location','$win
                                               '$localStorage','erroriProvenientiDalServer','$timeout','$modal',
 		function ($scope,$http,$location,$window,apiConf,$rootScope,loginFactory,$localStorage,erroriProvenientiDalServer,$timeout,$modal) {
     
-    $scope.errorFromServer = false;
+
+    $rootScope.userNotExit = false;
     var IamFromCarrello = $rootScope.DoYouFrom;
     $scope.submitForm = function(){  
     	 var FormData = {
@@ -16,11 +17,10 @@ angular.module('app').controller('LoginCtrl',['$scope','$http','$location','$win
         	function(res){
     		 if (res == "") {     		 			
     		 		erroriProvenientiDalServer.query(function(data){
-    		 		$scope.errorFromServer = true; 
     	 			$rootScope.credenziali_errate="Credenziali errate"; 
-    	 			
+    	 			$rootScope.userNotExit = true;
     	 			var modalInstance = $modal.open({
-    					templateUrl: 'erroriFromServer.html',
+    					templateUrl: 'app/common/alertMsg/cred_err.html',
     					controller: 'ModalCtrl',
     					resolve: {}
     				})

@@ -16,8 +16,7 @@
 	</div>
 	<div class="col-xs-6 col-md-6">
 		<h5>Quantit&aacute;</h5><hr>
-			<select ng-model="qta">
-			<option ng-repeat="quant in quantita">{{quant}}</option>
+			<select ng-model="qta" ng-options="qta for qta in quantita">
 			</select>
 		 <h2>
 			<a class="btn btn active" role="button"
