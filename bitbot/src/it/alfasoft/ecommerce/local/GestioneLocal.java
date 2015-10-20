@@ -54,7 +54,7 @@ public class GestioneLocal {
 		
 		try {
 			daolocal = new DAOLocalita();
-			daolocal.leggiComuni(idregione, idprovincia);
+			comuni = daolocal.leggiComuni(idregione, idprovincia);
 		} catch (SQLException | ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
