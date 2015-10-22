@@ -57,7 +57,7 @@ public class Local {
 		
 		localita = new GestioneLocal();
 		
-		comuni = gson.toJson(localita.getComuni(Integer.parseInt(idregione), Integer.parseInt(idprovincia)));
+		comuni = gson.toJson(localita.getComuni(Integer.valueOf(idregione), Integer.valueOf(idprovincia)));
 		
 		return comuni;
 	}
