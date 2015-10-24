@@ -27,6 +27,7 @@ angular.module('app', [
 				  $routeProvider.when('/', {
         templateUrl: 'app/main/main.html',
       })
+      
       .when('/about', {
         templateUrl: 'app/common/about.html',
       })
